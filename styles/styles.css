@@ -1,0 +1,232 @@
+/*
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .dark-mode {
+    --bg-color: #121212;
+    --text-color: #f1f1f1;
+  }
+*/
+
+:root{
+    --main:#2196F3;
+}
+/* Load fonts */
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(../assets/fonts/Raleway-Black.ttf);
+}
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(../assets/fonts/Raleway-Regular.ttf);
+}
+/* En Loading fonts */
+h1,h2,h3{
+    font-family:"ralewayBlack" ;
+}
+*{
+    font-family: "ralewayRegular";
+    box-sizing: border-box;
+}
+
+.base{
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "ralewayRegular";
+}
+
+.h1{
+    font-size: 24px;
+    font-family: "ralewayBlack";
+}
+
+/* Form Input styles */
+
+/* Buttons */
+
+button{
+    padding:16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+    background-image: linear-gradient(90deg,#21e2f3, #2196F3 );
+    border: none;
+    outline: none;
+    color: white;
+    box-shadow:0px 5px 9px #2195f333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+button:active{
+    transform: scale(1.04);
+}
+
+.secondBtn{
+    padding:16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+    border: 1px solid var(--main);
+    color:  var(--main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+}
+
+.secondBtn:active{
+    transform: scale(1.04);
+}
+/*  */
+
+.formItem .label {
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.formItem {
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.formItem input {
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+input,textarea{
+    font-size: 16px;
+}
+/* End form input styles */
+
+.createCashFlow{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    padding:16px;
+}
+
+.formCreateCashflow{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.cashflowType{
+    display: flex;
+    gap:16px;
+}
+
+.cashflowType div{
+    flex:1;
+    padding:16px;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.25s;
+}
+
+.cashflowType div.activated{
+    background-color: var(--main);
+    color:#fff;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+}
+.g16{
+    gap:16px;
+}
+
+.collections{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    position: fixed;
+    left: 0;
+    top:0;
+    background-color: #fff;
+    height: 100vh;
+    transition: 0.25s;
+}
+
+.collections.inactive{
+    transform: translateX(-50px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.collectionItems{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.collectionItem{
+    padding: 16px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back{
+    padding: 16px;
+    border-bottom: 1px solid #e7e7e7;
+    position: sticky;
+    top:0;
+    background-color: #fff;
+}
+
+.emptyCollections{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    padding: 32px;
+    align-items: center;
+}
+
+#selectedCollectionTextViewId{
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.f1{
+    flex:1;
+}
+
+.p8{
+    padding: 8px;
+}
+
+#removeSelectedCollection.active{
+    opacity: 1;
+}
+
+#removeSelectedCollection.disable{
+    opacity: 0;
+}
+

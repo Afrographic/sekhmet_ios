@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sekhmet</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" href="assets/images/sekhmet_fav.png" />
+    <script src="libs/afro.js"></script>
+    <script src="libs/jsstore.js"></script>
+    <script src="libs/jsstore.worker.js"></script>
+
+    <!-- Database File -->
+    <script src="scripts/db.js"></script>
+  </head>
+  <body>
+    <!-- Creer un cashflow -->
+    <div class="createCashFlow">
+      <div class="back">
+        <img src="assets/images/back.svg" width="24px" alt="" />
+      </div>
+
+      <img src="assets/images/sekhmet.svg" width="48px" alt="" />
+      <h1>Creer un cashflow</h1>
+      <div>Veuillez remplir le formulaire ci-dessous</div>
+      <div class="formCreateCashflow">
+        <div class="formItem">
+          <div class="label">Nom</div>
+          <input type="text" placeholder="Exemple : Achat d'une chaussure " id="nomCashflowInput" />
+        </div>
+        <div class="formItem">
+          <div class="label">Prix</div>
+          <input
+            type="number"
+            placeholder="Prix"
+            id="prixCashflowInput"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Type</div>
+          <div class="cashflowType">
+            <div class="activated" id="depenseBtn" onclick="setDepense()">
+              Depense
+            </div>
+            <div class="disabled" id="gainBtn" onclick="setGain()">Gain</div>
+          </div>
+        </div>
+        <div class="formItem">
+          <div class="label">Collection (facultatif)</div>
+          <div class="row g16 p8" onclick="pickCollection()">
+            <img src="assets/images/collection.svg" width="24px" alt="" />
+            <div id="selectedCollectionTextView" >Cliquez pour selectionner</div>
+            <div id="selectedCollectionTextViewId">0</div>
+            <div class="f1"></div>
+            <img src="assets/images/close.svg" onclick="removeSelectedCollection(event)" width="16px" alt="" id="removeSelectedCollection" class="disable">
+          </div>
+        </div>
+      </div>
+
+      <button onclick="createCashflow()">Creer un cashflow</button>
+    </div>
+    <!-- Fin Creer un cashflow -->
+
+    <!-- Collections -->
+    <div class="collections inactive">
+      <div class="back">
+        <img src="assets/images/back.svg" width="24px" alt="" onclick="closePickCollection()" />
+      </div>
+      <div>
+        <img src="assets/images/collection.svg" width="48px" alt="" />
+        <h2>Collections</h2>
+        <div class="base">
+          Veuillez selectionner la collection sur la liste ci dessous
+        </div>
+      </div>
+      <div class="collectionItems">
+        <div class="emptyCollections">
+            <img src="assets/images/empty.svg" width="48px" alt="">
+            <div class="base">
+                Aucune collection pour l'instant
+            </div>
+        </div>
+        <!-- Collection template -->
+        <!-- <div class="collectionItem">
+          <div>Deplacement</div>
+          <div>
+            <img src="assets/images/delete.svg" width="24px" alt="" />
+          </div>
+        </div> -->
+        <!-- End Collection template -->
+      </div>
+      <div class="formItem">
+        <div class="label">Nom de la collection</div>
+        <input type="text" placeholder="Nom de la collection" id="nomCollectionInput" />
+      </div>
+      <div class="secondBtn" onclick="createCollection()">Creer une collection</div>
+    </div>
+    <!-- Fin Collections -->
+    <script src="scripts/add_cash_flow.js"></script>
+    <script src="scripts/collections.js"></script>
+  </body>
+</html>
