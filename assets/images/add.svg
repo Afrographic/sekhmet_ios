@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 199.44 199.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+        filter: url(#drop-shadow-1);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="41.07" y1="89.85" x2="156.37" y2="89.85" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5ecbed"/>
+      <stop offset="1" stop-color="#3dc7f4"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="10"/>
+      <feGaussianBlur result="blur" stdDeviation="14"/>
+      <feFlood flood-color="#3dc7f4" flood-opacity=".75"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <circle class="cls-2" cx="98.72" cy="89.85" r="57.65"/>
+      <path class="cls-1" d="M117.88,86.39h-15.69v-15.69c0-1.63-1.33-2.96-2.96-2.96h-1c-1.63,0-2.96,1.33-2.96,2.96v15.69h-15.69c-1.63,0-2.96,1.33-2.96,2.96v1c0,1.63,1.33,2.96,2.96,2.96h15.69v15.69c0,1.63,1.33,2.96,2.96,2.96h1c1.63,0,2.96-1.33,2.96-2.96v-15.69h15.69c1.63,0,2.96-1.33,2.96-2.96v-1c0-1.63-1.33-2.96-2.96-2.96Z"/>
+    </g>
+  </g>
+</svg>

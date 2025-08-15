@@ -111,5 +111,15 @@ async function createCashflow(){
     nomCashflowInput.value = "";
     prixCashflowInput.value = "";
     removeSelectedCollection(null);
+    closeCreateCashFlowView();
+    renderCashflow();
+}
 
+function closeCreateCashFlowView(){
+    let addCashflowButton = document.querySelector(".addCashflowButton");
+    let createCashFlow = document.querySelector(".createCashFlow");
+    let home = document.querySelector(".home");
+    addCashflowButton.classList.remove("inactive");
+    home.classList.remove("inactive");
+    createCashFlow.classList.add("inactive");
 }

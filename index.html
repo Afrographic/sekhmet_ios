@@ -14,9 +14,47 @@
     <script src="scripts/db.js"></script>
   </head>
   <body>
+    <!-- Home -->
+    <div class="home">
+      <img
+        src="assets/images/add.svg"
+        alt=""
+        width="96px"
+        class="addCashflowButton"
+        onclick="goToCreateCashflowView()"
+      />
+      <div class="title_logo">
+        <img src="assets/images/sekhmet.svg" alt="" width="24px" />
+        <div>Sekhmet</div>
+      </div>
+
+      <div class="listCashflows">
+        <div class="cahsflowItemList"  onmousedown="startPress(this)"
+        ontouchstart="startPress(this)" onmouseup="cancelPress(this)" onmouseleave="cancelPress(this)"
+        ontouchend="cancelPress(this)" ontouchcancel="cancelPress(this)">
+          <div class="options inactive">
+            <img src="assets/images/msg_edit.svg" alt="">
+            <img src="assets/images/msg_delete.svg" alt="">
+          </div>
+          <div>Achat d'une montre</div>
+          <div class="priceDate">
+            <div class="price">-30 000 000 XAF</div>
+            <div class="date">13 Aout 2025 - 18:24:36</div>
+          </div>
+        </div>
+        <div class="cahsflowItemList">
+          <div>Design de logo</div>
+          <div class="priceDate">
+            <div class="price gain">+30 000 000 XAF</div>
+            <div class="date">12 Aout 2025 - 17:24:36</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Home -->
     <!-- Creer un cashflow -->
-    <div class="createCashFlow">
-      <div class="back">
+    <div class="createCashFlow inactive">
+      <div class="back" onclick="closeCreateCashFlowView()">
         <img src="assets/images/back.svg" width="24px" alt="" />
       </div>
 
@@ -26,7 +64,11 @@
       <div class="formCreateCashflow">
         <div class="formItem">
           <div class="label">Nom</div>
-          <input type="text" placeholder="Exemple : Achat d'une chaussure " id="nomCashflowInput" />
+          <input
+            type="text"
+            placeholder="Exemple : Achat d'une chaussure "
+            id="nomCashflowInput"
+          />
         </div>
         <div class="formItem">
           <div class="label">Prix</div>
@@ -51,22 +93,34 @@
           <div class="label">Collection (facultatif)</div>
           <div class="row g16 p8" onclick="pickCollection()">
             <img src="assets/images/collection.svg" width="24px" alt="" />
-            <div id="selectedCollectionTextView" >Cliquez pour selectionner</div>
+            <div id="selectedCollectionTextView">Cliquez pour selectionner</div>
             <div id="selectedCollectionTextViewId">0</div>
             <div class="f1"></div>
-            <img src="assets/images/close.svg" onclick="removeSelectedCollection(event)" width="16px" alt="" id="removeSelectedCollection" class="disable">
+            <img
+              src="assets/images/close.svg"
+              onclick="removeSelectedCollection(event)"
+              width="16px"
+              alt=""
+              id="removeSelectedCollection"
+              class="disable"
+            />
           </div>
         </div>
       </div>
 
-      <button onclick="createCashflow()">Creer un cashflow</button>
+      <button onclick="createCashflow()">Enregistrer</button>
     </div>
     <!-- Fin Creer un cashflow -->
 
     <!-- Collections -->
     <div class="collections inactive">
       <div class="back">
-        <img src="assets/images/back.svg" width="24px" alt="" onclick="closePickCollection()" />
+        <img
+          src="assets/images/back.svg"
+          width="24px"
+          alt=""
+          onclick="closePickCollection()"
+        />
       </div>
       <div>
         <img src="assets/images/collection.svg" width="48px" alt="" />
@@ -77,10 +131,8 @@
       </div>
       <div class="collectionItems">
         <div class="emptyCollections">
-            <img src="assets/images/empty.svg" width="48px" alt="">
-            <div class="base">
-                Aucune collection pour l'instant
-            </div>
+          <img src="assets/images/empty.svg" width="48px" alt="" />
+          <div class="base">Aucune collection pour l'instant</div>
         </div>
         <!-- Collection template -->
         <!-- <div class="collectionItem">
@@ -93,12 +145,19 @@
       </div>
       <div class="formItem">
         <div class="label">Nom de la collection</div>
-        <input type="text" placeholder="Nom de la collection" id="nomCollectionInput" />
+        <input
+          type="text"
+          placeholder="Nom de la collection"
+          id="nomCollectionInput"
+        />
       </div>
-      <div class="secondBtn" onclick="createCollection()">Creer une collection</div>
+      <div class="secondBtn" onclick="createCollection()">
+        Creer une collection
+      </div>
     </div>
     <!-- Fin Collections -->
     <script src="scripts/add_cash_flow.js"></script>
     <script src="scripts/collections.js"></script>
+    <script src="scripts/home.js"></script>
   </body>
 </html>
