@@ -3,11 +3,19 @@ let createCashFlow = document.querySelector(".createCashFlow");
 let home = document.querySelector(".home");
 
 function goToCreateCashflowView(){
+    let editTitle = document.getElementById("editTitle");
+    editTitle.innerHTML = "Creer un cashflow";
+
     let nomCashflowInput = document.querySelector("#nomCashflowInput");
+    let prixCashflowInput = document.querySelector("#prixCashflowInput");
+    nomCashflowInput.value="";
+    prixCashflowInput.value="";
     nomCashflowInput.focus();
     addCashflowButton.classList.add("inactive");
     home.classList.add("inactive");
     createCashFlow.classList.remove("inactive");
+    setDepense();
+    removeSelectedCollection(null);
 }
 
 function preventBrowserContextMenu(){
@@ -38,12 +46,12 @@ async function renderCashflow(){
         ontouchstart="startPress(this)" onmouseup="cancelPress(this)" onmouseleave="cancelPress(this)"
         ontouchend="cancelPress(this)" ontouchcancel="cancelPress(this)">
             <div class="options inactive">
-                <img src="assets/images/msg_edit.svg" alt="">
-                <img src="assets/images/msg_delete.svg" alt="">
+                <img src="assets/images/msg_edit.svg" alt="" onclick="editCashflow(${i})">
+                <img src="assets/images/msg_delete.svg" alt="" onclick="deleteCashflow(${i})">
             </div>
             <div>${cashflows[i].name}</div>
             <div class="priceDate">
-                <div class="price ${gain}">${sign}${Afro.formatNumWithWhiteSpace(cashflows[i].prix)} XAF</div>
+                <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(cashflows[i].prix)} XAF</div>
                 <div class="date">${Afro.Ucase(cashflows[i].fullDateFrench)}</div>
             </div>
         </div>
@@ -53,6 +61,18 @@ async function renderCashflow(){
 }
 renderCashflow();
 
+function editCashflow(i){
+    EditCashFlow.initView(i);
+}
+
+async function deleteCashflow(i){
+    if(confirm("Voulez vous vraiment supprimer l'enregistrement?")){
+        console.log(i);
+        cashflows.splice(i,1);
+        await updateDB(cashflows);
+        renderCashflow();
+    }
+}
 
 // Manage casflow menu on long press
  // Show menu

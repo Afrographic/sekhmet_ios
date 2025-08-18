@@ -36,7 +36,6 @@ function renderCollections(){
         </div> 
         `
     }
-    console.log(collections);
 }
 
 function selectCollection(index){
@@ -44,6 +43,8 @@ function selectCollection(index){
     let selectedCollectionTextView = document.querySelector("#selectedCollectionTextView");
     let selectedCollectionTextViewId = document.querySelector("#selectedCollectionTextViewId");
     let removeSelectedCollection = document.querySelector("#removeSelectedCollection");
+
+    console.log(collections[index]);
 
     selectedCollectionTextView.innerHTML = collections[index].name;
     selectedCollectionTextViewId.innerHTML = collections[index].id;
