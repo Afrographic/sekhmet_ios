@@ -46,8 +46,6 @@ class EditCashFlow{
         EditCashFlow.cashFlowToEdit.prix = prix;
         EditCashFlow.cashFlowToEdit.isGain = isGain;
         EditCashFlow.cashFlowToEdit.isDepense = isDepense;
-
-        console.log(EditCashFlow.cashFlowToEdit);
         
         for(let i = 0 ; i <= cashflows.length-1;i++){
             if(cashflows[i].id == EditCashFlow.cashFlowToEdit.id){

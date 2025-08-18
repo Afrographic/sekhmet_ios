@@ -24,6 +24,7 @@ body{
     padding: 0;
 }
 
+
 :root{
     --main:#2196F3;
 }
@@ -181,7 +182,9 @@ input,textarea{
     transform: translateX(-50px);
     opacity: 0;
     pointer-events: none;
-    height: 0;
+    height: 0px !important;
+    padding: 0px !important;
+    overflow: hidden;
 }
 
 .collectionItems{
@@ -197,6 +200,10 @@ input,textarea{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.c_main{
+    color: var(--main);
 }
 
 .back{
@@ -244,13 +251,14 @@ input,textarea{
 .title_logo{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap:16px;
     padding: 16px;
     border-bottom: 1px solid #e3e3e3;
     position: sticky;
     top: 0;
     background-color: #fff;
+    z-index: 1;
 }
 
 
@@ -259,6 +267,7 @@ input,textarea{
     bottom: 16px;
     right: 16px;
     transition: 0.25s;
+    z-index: 1;
 }
 
 .listCashflows{
@@ -308,4 +317,20 @@ input,textarea{
 
 .cahsflowItemList .options img{
     width: 36px;
+}
+
+.currency{
+    padding:32px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    transition: 0.25s;
+}
+
+.aic{
+    align-items: center;
+}
+
+.g8{
+    gap:8px;
 }

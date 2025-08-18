@@ -41,7 +41,6 @@ async function init_data() {
     });
   } else {
     cashflows = cashflowsDB[0].cashflows;
-    console.log(cashflows);
   }
 }
 

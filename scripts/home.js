@@ -16,6 +16,10 @@ function goToCreateCashflowView(){
     createCashFlow.classList.remove("inactive");
     setDepense();
     removeSelectedCollection(null);
+
+    //Scroll to top position
+    let html = document.querySelector("html");
+    html.scrollTop = 0;
 }
 
 function preventBrowserContextMenu(){
@@ -30,7 +34,6 @@ function preventBrowserContextMenu(){
 
 async function renderCashflow(){
     await init_data();
-    console.log(cashflows);
     let listCashflows = document.querySelector(".listCashflows");
     listCashflows.innerHTML = "";
     for(let i = 0 ; i<=cashflows.length - 1;i++){
@@ -51,7 +54,7 @@ async function renderCashflow(){
             </div>
             <div>${cashflows[i].name}</div>
             <div class="priceDate">
-                <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(cashflows[i].prix)} XAF</div>
+                <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(cashflows[i].prix)} ${setCurrency.currency}</div>
                 <div class="date">${Afro.Ucase(cashflows[i].fullDateFrench)}</div>
             </div>
         </div>
