@@ -17,22 +17,22 @@
     <!-- Configuration - get Currency -->
     <div class="currency">
       <div class="row aic g16">
-        <img src="assets/images/sekhmet.svg" alt="" width="48px">
+        <img src="assets/images/sekhmet.svg" alt="" width="48px" />
         <h2 class="c_main">Sekhmet</h2>
       </div>
       <h1>Configuration</h1>
-        <div class="base">
-          Bienvenue sur Sekhmet , veuillez renseigner votre devise
-        </div>
-        <div class="formItem">
-          <div class="label">Devise</div>
-          <input
-            type="text"
-            placeholder="Exemple : FCFA, XAF, F, $ etc."
-            id="devise"
-          />
-        </div>
-        <button onclick="setCurrency.save()">Enregistrer</button>
+      <div class="base">
+        Bienvenue sur Sekhmet , veuillez renseigner votre devise
+      </div>
+      <div class="formItem">
+        <div class="label">Devise</div>
+        <input
+          type="text"
+          placeholder="Exemple : FCFA, XAF, F, $ etc."
+          id="devise"
+        />
+      </div>
+      <button onclick="setCurrency.save()">Enregistrer</button>
     </div>
     <!-- Home -->
     <div class="home">
@@ -45,21 +45,98 @@
       />
 
       <div class="title_logo">
-        <img src="assets/images/info.svg" alt="" width="24px">
-        <div class="row aic g8">
-          <img src="assets/images/sekhmet.svg" alt="" width="24px" />
-          <div>Sekhmet</div>
+        <div class="logoSettings">
+          <img src="assets/images/info.svg" alt="" width="24px" />
+          <div class="row aic g8">
+            <img src="assets/images/sekhmet.svg" alt="" width="24px" />
+            <div>Sekhmet</div>
+          </div>
+          <img
+            src="assets/images/settings.svg"
+            alt=""
+            width="24px"
+            onclick="setCurrency.edit()"
+          />
         </div>
-        <img src="assets/images/settings.svg" alt="" width="24px" onclick="setCurrency.edit()">
+        <div class="globalStat">
+          <div class="item">
+            <div>Gain</div>
+            <div id="totalGainView">90 000 000 XAF</div>
+          </div>
+          <div class="item">
+            <div>Depense</div>
+            <div id="totalDepenseView">90 000 000 XAF</div>
+          </div>
+          <div class="item">
+            <div>Epargne</div>
+            <div id="TotalEpargneView">90 000 000 XAF</div>
+          </div>
+        </div>
       </div>
 
+      <!-- Day Stats -->
+      <div class="dayStats">
+        <div class="dayStatItem">
+          <div class="dayStatItemTitle">
+            <div class="dayStatDate">
+              <div>Lundi 20 Aout 2025</div>
+              <img src="assets/images/dropdown.svg" width="30px" alt="">
+            </div>
+            <div class="globalStat">
+              <div class="item">
+                <div>Gain</div>
+                <div>90 000 000 XAF</div>
+              </div>
+              <div class="item">
+                <div>Depense</div>
+                <div>90 000 000 XAF</div>
+              </div>
+              <div class="item">
+                <div>Epargne</div>
+                <div>90 000 000 XAF</div>
+              </div>
+            </div>
+          </div>
+          <div class="dayStatCashflow">
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Day Stats -->
+
       <div class="listCashflows">
-        <div class="cahsflowItemList"  onmousedown="startPress(this)"
-        ontouchstart="startPress(this)" onmouseup="cancelPress(this)" onmouseleave="cancelPress(this)"
-        ontouchend="cancelPress(this)" ontouchcancel="cancelPress(this)">
+        <div
+          class="cahsflowItemList"
+          onmousedown="startPress(this)"
+          ontouchstart="startPress(this)"
+          onmouseup="cancelPress(this)"
+          onmouseleave="cancelPress(this)"
+          ontouchend="cancelPress(this)"
+          ontouchcancel="cancelPress(this)"
+        >
           <div class="options inactive">
-            <img src="assets/images/msg_edit.svg" alt="">
-            <img src="assets/images/msg_delete.svg" alt="">
+            <img src="assets/images/msg_edit.svg" alt="" />
+            <img src="assets/images/msg_delete.svg" alt="" />
           </div>
           <div>Achat d'une montre</div>
           <div class="priceDate">

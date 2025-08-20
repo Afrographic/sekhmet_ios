@@ -36,6 +36,7 @@ async function renderCashflow(){
     await init_data();
     let listCashflows = document.querySelector(".listCashflows");
     listCashflows.innerHTML = "";
+    return;
     for(let i = 0 ; i<=cashflows.length - 1;i++){
         let gain= "gain";
         let sign = "+";
@@ -64,16 +65,27 @@ async function renderCashflow(){
 }
 renderCashflow();
 
-function editCashflow(i){
-    EditCashFlow.initView(i);
+function editCashflow(id){
+    let index = -1;
+    for(let i = 0 ;i<=cashflows.length-1;i++){
+        if(cashflows[i].id == id){
+            index = i;
+        }
+    }
+    EditCashFlow.initView(index);
 }
 
-async function deleteCashflow(i){
+async function deleteCashflow(id){
+    let index = -1;
+    for(let i = 0 ;i<=cashflows.length-1;i++){
+        if(cashflows[i].id == id){
+            index = i;
+        }
+    }
     if(confirm("Voulez vous vraiment supprimer l'enregistrement?")){
-        console.log(i);
-        cashflows.splice(i,1);
+        cashflows.splice(index,1);
         await updateDB(cashflows);
-        renderCashflow();
+        Stat.compute();
     }
 }
 

@@ -248,10 +248,10 @@ input,textarea{
     display: flex;
     flex-direction: column;
 }
+
 .title_logo{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap:16px;
     padding: 16px;
     border-bottom: 1px solid #e3e3e3;
@@ -261,6 +261,12 @@ input,textarea{
     z-index: 1;
 }
 
+.logoSettings{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:16px;
+}
 
 .addCashflowButton{
     position: fixed;
@@ -333,4 +339,64 @@ input,textarea{
 
 .g8{
     gap:8px;
+}
+
+.globalStat{
+    display: flex;
+    justify-content: space-between;
+}
+
+.globalStat .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:4px;
+}
+
+.globalStat .item div:first-child{
+    font-size: 11px;
+    color:grey;
+}
+
+.globalStat .item div:last-child{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dayStatCashflow{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.dayStats{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.dayStatItem{
+    padding: 16px;
+    border:1px solid #ebebeb;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.dayStatItemTitle{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.dayStatDate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dayStatDate img{
+    transition: 0.25s;
 }

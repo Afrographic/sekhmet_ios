@@ -126,7 +126,7 @@ async function createCashflow() {
   prixCashflowInput.value = "";
   removeSelectedCollection(null);
   closeCreateCashFlowView();
-  renderCashflow();
+  Stat.compute();
 }
 
 function closeCreateCashFlowView() {

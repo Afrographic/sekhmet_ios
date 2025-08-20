@@ -210,9 +210,41 @@ class Afro {
     return dayName;
   }
 
+  static getWeekName(year,month,day){
+    const date = new Date(year,month-1,day);
+    return date.toLocaleString("fr-FR", { weekday: "long" });
+  }
+
+  static getMonthNameFromMontIdAndYear(month,year){
+    const date = new Date(year,month-1,1);
+    const dateComplete =date.toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+    });
+    return dateComplete;
+  }
+
+  static fullDateInFrenchWihoutWeekDay() {
+    const dateComplete = new Date().toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return dateComplete;
+  }
+
   static fullDateInFrench() {
     const dateComplete = new Date().toLocaleDateString("fr-FR", {
       weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return dateComplete;
+  }
+
+  static fullDateInEnglishWihoutWeekDay() {
+    const dateComplete = new Date().toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
