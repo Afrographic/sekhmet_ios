@@ -246,6 +246,7 @@ input,textarea{
 
 .home{
     display: flex;
+    transition: 0.25s;
     flex-direction: column;
 }
 
@@ -268,12 +269,24 @@ input,textarea{
     gap:16px;
 }
 
+.yearStatView{
+    transition: 0.25s;
+}
+
 .addCashflowButton{
     position: fixed;
     bottom: 16px;
     right: 16px;
     transition: 0.25s;
     z-index: 1;
+}
+
+.statBtn{
+    position: fixed;
+    bottom: 107px;
+    right: 38px;
+    transition: 0.25s;
+    z-index: 1; 
 }
 
 .listCashflows{
@@ -363,10 +376,15 @@ input,textarea{
     font-weight: bold;
 }
 
+.jcsb{
+    justify-content: space-between;
+}
+
 .dayStatCashflow{
     display: flex;
     flex-direction: column;
     gap:8px;
+    transition: 0.25s;
 }
 
 .dayStats{
@@ -399,4 +417,88 @@ input,textarea{
 
 .dayStatDate img{
     transition: 0.25s;
+}
+
+.yearStatTitle{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding:16px;
+    border-bottom: 1px solid #e3e3e3;
+    gap:16px;
+    position: sticky;
+    top:0;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.yearStatTitle h3{
+    margin: 0;
+    text-align: center;
+    display: flex;
+    gap:16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.jcc{
+    justify-content: center;
+}
+
+.yearStat{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px
+}
+
+hr{
+    width: 100%;
+    opacity: 0.2;
+}
+
+.yearStatMonthsView{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.dateToggle{
+    font-size: 12px;
+    padding:8px;
+    border:1px solid #aaa;
+    border-radius: 8px;
+    opacity: 0.6;
+}
+
+.homeCollection{
+    display: flex;
+    overflow: auto;
+    padding: 16px 0px;
+}
+
+.homeCollectionItem{
+    color:white;
+    background-color: var(--main);
+    padding: 16px 32px;
+    border-radius: 8px;
+    margin-left: 16px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.homeCollection .homeCollectionItem:last-child{
+    margin-right: 16px;
+}
+
+.homeCollectionItem div:first-child{
+    opacity: 0.6;
+}
+
+.homeCollectionItem div:last-child{
+    font-weight: bold;
+    font-size: 18px;
 }

@@ -22,6 +22,15 @@ function goToCreateCashflowView(){
     html.scrollTop = 0;
 }
 
+function goToStatView(){
+    let home = document.querySelector(".home");
+    let yearStatView = document.querySelector(".yearStatView");
+    home.classList.toggle("inactive");
+    yearStatView.classList.toggle("inactive");
+}
+
+
+
 function preventBrowserContextMenu(){
     let cahsflowItemList = document.querySelectorAll(".cahsflowItemList");
     for(let i = 0 ; i<=cahsflowItemList.length-1;i++){

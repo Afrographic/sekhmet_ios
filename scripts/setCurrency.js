@@ -31,7 +31,7 @@ class setCurrency{
         home.classList.remove("inactive");
         html.style.overflow ="auto"; 
         setCurrency.currency = devise.value;
-        renderCashflow();
+        Stat.compute();
     }
 
     static edit(){

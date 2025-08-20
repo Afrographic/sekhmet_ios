@@ -22,7 +22,10 @@
       </div>
       <h1>Configuration</h1>
       <div class="base">
-        Bienvenue sur Sekhmet , veuillez renseigner votre devise
+        Bienvenue sur Sekhmet ,l'application qui vous mettra de surveiller avec precisions vos depenses.  
+      </div>
+      <div>
+        Veuillez renseigner votre devise
       </div>
       <div class="formItem">
         <div class="label">Devise</div>
@@ -43,6 +46,14 @@
         class="addCashflowButton"
         onclick="goToCreateCashflowView()"
       />
+
+      <img
+      src="assets/images/stat.svg"
+      alt=""
+      width="52px"
+      class="statBtn"
+      onclick="goToStatView()"
+    />
 
       <div class="title_logo">
         <div class="logoSettings">
@@ -74,6 +85,29 @@
         </div>
       </div>
 
+      <div class="homeCollection">
+        <div class="homeCollectionItem">
+          <div>Electronique</div>
+          <div>50 000 F</div>
+        </div>
+        <div class="homeCollectionItem">
+          <div>Electronique</div>
+          <div>50 000 F</div>
+        </div>
+        <div class="homeCollectionItem">
+          <div>Electronique</div>
+          <div>50 000 F</div>
+        </div>
+        <div class="homeCollectionItem">
+          <div>Electronique</div>
+          <div>50 000 F</div>
+        </div>
+        <div class="homeCollectionItem">
+          <div>Electronique</div>
+          <div>50 000 F</div>
+        </div>
+      </div>
+
       <!-- Day Stats -->
       <div class="dayStats">
         <div class="dayStatItem">
@@ -82,6 +116,7 @@
               <div>Lundi 20 Aout 2025</div>
               <img src="assets/images/dropdown.svg" width="30px" alt="">
             </div>
+            <hr>
             <div class="globalStat">
               <div class="item">
                 <div>Gain</div>
@@ -152,6 +187,7 @@
           </div>
         </div>
       </div>
+      <div style="height: 85px;"></div>
     </div>
     <!-- Fin Home -->
     <!-- Creer un cashflow -->
@@ -258,6 +294,85 @@
       </div>
     </div>
     <!-- Fin Collections -->
+    <!-- Year Stat -->
+    <div class="yearStatView inactive">
+      <div class="yearStatTitle">
+        <img src="assets/images/back.svg" alt="" width="24px" onclick="goToHomeFromStat()">
+        <div class="row jcsb aic">
+          <div class="dateToggle" id="previousYearView" onclick="Stat.renderYearStat(this)">2024</div>
+          <div class="row aic g16 jcc">
+            <img src="assets/images/sekhmet.svg" width="24px" alt="">
+            <h3 id="currentYearView" class="c_main">2025</h3>
+          </div>
+          <div class="dateToggle" id="nextYearView" onclick="Stat.renderYearStat(this)">2026 </div>
+        </div>
+       
+        
+        <div class="globalStat">
+          <div class="item">
+            <div>Gain</div>
+            <div id="yearGainView">90 000 000 XAF</div>
+          </div>
+          <div class="item">
+            <div>Depense</div>
+            <div id="yearDepenseView">90 000 000 XAF</div>
+          </div>
+          <div class="item">
+            <div>Epargne</div>
+            <div id="yearEpargneView">90 000 000 XAF</div>
+          </div>
+        </div>
+      </div>
+      <div class="yearStatMonthsView">
+        <div class="dayStatItem">
+          <div class="dayStatItemTitle">
+            <div class="dayStatDate">
+              <div>Lundi 20 Aout 2025</div>
+              <img src="assets/images/dropdown.svg" width="30px" alt="">
+            </div>
+            <hr>
+            <div class="globalStat">
+              <div class="item">
+                <div>Gain</div>
+                <div>90 000 000 XAF</div>
+              </div>
+              <div class="item">
+                <div>Depense</div>
+                <div>90 000 000 XAF</div>
+              </div>
+              <div class="item">
+                <div>Epargne</div>
+                <div>90 000 000 XAF</div>
+              </div>
+            </div>
+          </div>
+          <div class="dayStatCashflow">
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+            <div class="cahsflowItemList">
+              <div>Design de logo</div>
+              <div class="priceDate">
+                <div class="price gain">+30 000 000 XAF</div>
+                <div class="date">12 Aout 2025 - 17:24:36</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End year Stat -->
     <script src="scripts/add_cash_flow.js"></script>
     <script src="scripts/edit_cash_flow.js"></script>
     <script src="scripts/collections.js"></script>

@@ -23,6 +23,8 @@ function getCollections(){
 }
 getCollections();
 
+
+
 function renderCollections(){
     let collectionItems = document.querySelector(".collectionItems");
     collectionItems.innerHTML = "";

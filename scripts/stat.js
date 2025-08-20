@@ -1,9 +1,18 @@
 class Stat {
+  static devise = "XAF";
   static async compute() {
     await init_data();
+    this.devise = localStorage.getItem("sekhmetCurrency");
     this.computeTotalStat();
     this.groupPerDay();
-    this.computeMonthYearStat(2025);
+    let year = Afro.getYear();
+    this.computeMonthYearStat(year);
+    this.computeCollectionStat();
+  }
+
+  static renderYearStat(el) {
+    let year = parseInt(el.innerHTML);
+    this.computeMonthYearStat(year);
   }
 
   static async groupPerDay() {
@@ -93,7 +102,7 @@ class Stat {
         dayGroup[i].date
       }</div>
         </div>
-        <hr style="width: 100%;opacity: 0.2;">
+        <hr>
         <div class="globalStat">
           <div class="item">
             <div>Gain</div>
@@ -170,30 +179,188 @@ class Stat {
         }
       }
       yearStat.unshift({
-        cashflows : list,
-        gain : gain,
-        depense : depense,
-        epargne : gain - depense,
-        month : Afro.Ucase(Afro.getMonthNameFromMontIdAndYear(i,year))
-      })
-      
+        cashflows: list,
+        gain: gain,
+        depense: depense,
+        epargne: gain - depense,
+        month: Afro.Ucase(Afro.getMonthNameFromMontIdAndYear(i, year)),
+      });
     }
-    
+
     // year stat
     let yearGain = 0;
     let yearDepense = 0;
-    for(let i = 0 ; i <= yearStat.length -1;i++){
-        yearGain += yearStat[i].gain;
-        yearDepense += yearStat[i].depense;
+    for (let i = 0; i <= yearStat.length - 1; i++) {
+      yearGain += yearStat[i].gain;
+      yearDepense += yearStat[i].depense;
     }
     let yearFullStat = {
-        gain : yearGain,
-        depense : yearDepense,
-        epargne : yearGain - yearDepense,
-        months : yearStat
-    }
+      year: year,
+      gain: yearGain,
+      depense: yearDepense,
+      epargne: yearGain - yearDepense,
+      months: yearStat,
+    };
+    //Render View
     console.log(yearFullStat);
+    let devise = localStorage.getItem("sekhmetCurrency");
+    let currentYearView = document.querySelector("#currentYearView");
+    let yearGainView = document.querySelector("#yearGainView");
+    let yearDepenseView = document.querySelector("#yearDepenseView");
+    let yearEpargneView = document.querySelector("#yearEpargneView");
+
+    let previousYearView = document.querySelector("#previousYearView");
+    let nextYearView = document.querySelector("#nextYearView");
+
+    currentYearView.innerHTML = `${year}`;
+    previousYearView.innerHTML = `${year - 1}`;
+    nextYearView.innerHTML = `${year + 1}`;
+    yearGainView.innerHTML = `${Afro.formatNumWithWhiteSpace(
+      yearFullStat.gain
+    )} ${devise}`;
+    yearDepenseView.innerHTML = `${Afro.formatNumWithWhiteSpace(
+      yearFullStat.depense
+    )} ${devise}`;
+    yearEpargneView.innerHTML = `${Afro.formatNumWithWhiteSpace(
+      yearFullStat.epargne
+    )} ${devise}`;
+
+    //render months Cashflow
+    let yearStatMonthsView = document.querySelector(".yearStatMonthsView");
+    yearStatMonthsView.innerHTML = "";
+    for (let i = 0; i <= yearStat.length - 1; i++) {
+      let cashflowLists = "";
+      for (let j = 0; j <= yearStat[i].cashflows.length - 1; j++) {
+        let gain = "gain";
+        let sign = "+";
+        if (yearStat[i].cashflows[j].isDepense == 1) {
+          gain = "";
+          sign = "-";
+        }
+        cashflowLists += `
+        <div
+                class="cahsflowItemList"
+                onmousedown="startPress(this)"
+                ontouchstart="startPress(this)"
+                onmouseup="cancelPress(this)"
+                onmouseleave="cancelPress(this)"
+                ontouchend="cancelPress(this)"
+                ontouchcancel="cancelPress(this)"
+                >
+                    <div class="options inactive">
+                        <img src="assets/images/msg_edit.svg" alt="" onclick="editCashflow(${
+                          yearStat[i].cashflows[j].id
+                        })">
+                        <img src="assets/images/msg_delete.svg" alt="" onclick="deleteCashflow(${
+                          yearStat[i].cashflows[j].id
+                        })">
+                    </div>
+                    <div>${yearStat[i].cashflows[j].name}</div>
+                    <div class="priceDate">
+                        <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(
+          yearStat[i].cashflows[j].prix
+        )} ${setCurrency.currency}</div>
+                        <div class="date"> ${
+                          yearStat[i].cashflows[j].time
+                        }</div>
+                    </div>
+                </div>
+        `;
+      }
+
+      yearStatMonthsView.innerHTML += `
+      <div class="dayStatItem">
+      <div class="dayStatItemTitle">
+        <div class="dayStatDate">
+          <div> <span class="c_main">${yearStat[i].month}</span></div>
+          <img src="assets/images/hidden.svg" width="24px" onclick="toggleCasflowList(this)"/>
+        </div>
+        <hr>
+        <div class="globalStat">
+          <div class="item">
+            <div>Gain</div>
+            <div>${Afro.formatNumWithWhiteSpace(
+              yearStat[i].gain
+            )} ${devise}</div>
+          </div>
+          <div class="item">
+            <div>Depense</div>
+            <div>${Afro.formatNumWithWhiteSpace(
+              yearStat[i].depense
+            )} ${devise}</div>
+          </div>
+          <div class="item">
+            <div>Epargne</div>
+            <div>${Afro.formatNumWithWhiteSpace(
+              yearStat[i].epargne
+            )} ${devise}</div>
+          </div>
+        </div>
+      </div>
+      <div class="dayStatCashflow inactive">
+        ${cashflowLists}
+      </div>
+    </div>
+      `;
+    }
+  }
+
+  static computeCollectionStat() {
+    let collectionsDB = localStorage.getItem("collections");
+    if (collectionsDB == null) return;
+    let collections = JSON.parse(collectionsDB);
+    collections = Afro.sort(collections);
+
+    //Compute stat
+    for(let i = 0 ; i<=collections.length-1;i++){
+      let gain = 0;
+      let depense = 0;
+      for(let j = 0 ; j<= cashflows.length -1 ;j++){
+        if(cashflows[j].collectionId == collections[i].id){
+          if( cashflows[j].isDepense == 1){
+            depense += cashflows[j].prix;
+          }else{
+            gain += cashflows[j].prix;
+          }
+        }
+      }
+      collections[i].gain = gain;
+      collections[i].depense = depense;
+    }
+
+    
+    let homeCollection = document.querySelector(".homeCollection");
+    homeCollection.innerHTML ="";
+    for(let i = 0 ; i<=collections.length-1;i++){
+      homeCollection.innerHTML += `
+      <div class="homeCollectionItem">
+        <div>${collections[i].name}</div>
+        <div>${Afro.formatNumWithWhiteSpace(collections[i].depense)} ${this.devise}</div>
+      </div>
+      `
+    }
+    if(collections.length == 0){
+      homeCollection.classList.add("inactive");
+    }
   }
 }
 
 Stat.compute();
+
+function toggleCasflowList(el) {
+  let src = el.getAttribute("src");
+  if (src == "assets/images/hidden.svg") {
+    el.setAttribute("src", "assets/images/visible.svg");
+  } else {
+    el.setAttribute("src", "assets/images/hidden.svg");
+  }
+  let casflowsView = el.parentNode.parentNode.parentNode.lastElementChild;
+  casflowsView.classList.toggle("inactive");
+}
+
+function goToHomeFromStat() {
+  let home = document.querySelector(".home");
+  let yearStatView = document.querySelector(".yearStatView");
+  home.classList.toggle("inactive");
+  yearStatView.classList.toggle("inactive");
+}
