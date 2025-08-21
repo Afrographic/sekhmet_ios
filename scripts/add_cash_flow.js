@@ -21,12 +21,13 @@
 
 function pickCollection() {
   let collections = document.querySelector(".collections");
-  collections.classList.remove("inactive");
+  let createCashFlow = document.querySelector(".createCashFlow");
+  collections.classList.toggle("inactive");
+  createCashFlow.classList.toggle("inactive");
 }
 
 function closePickCollection() {
-  let collections = document.querySelector(".collections");
-  collections.classList.add("inactive");
+  this.pickCollection();
 }
 
 let isGain = 0;

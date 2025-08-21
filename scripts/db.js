@@ -39,9 +39,12 @@ async function init_data() {
       into: "cashflows",
       values: [value],
     });
+    cashflows =[];
+    Stat.compute();
   } else {
     cashflows = cashflowsDB[0].cashflows;
   }
+  
 }
 
 async function getCashflows() {

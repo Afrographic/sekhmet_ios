@@ -14,9 +14,49 @@
     <script src="scripts/db.js"></script>
   </head>
   <body>
+    <!-- Export de donnees -->
+    <div class="exportData inactive">
+      <img
+        src="assets/images/back.svg"
+        alt=""
+        width="24px"
+        onclick="toggleDataView()"
+      />
+      <h3>Migration et sauvegarde des donnees</h3>
+      <div class="base">
+        Veuillez selectionner le type de donnees a importer
+      </div>
+      <input type="file" hidden id="cashflowAndroidFileImporter" onchange="getCasflowAndroid(event)">
+      <input type="file" hidden id="collectionAndroidFileImporter" onchange="getCollectionAndroid(event)">
+      <input type="file" hidden id="dbImporter" onchange="getDb(event)">
+      <div class="imports">
+        <div class="importItem" onclick="triggerDBImport()">
+          <img src="assets/images/import.svg" width="24px" alt="">
+          <div>Importer les donnees Iphones</div>
+        </div>
+        <div class="importItem" onclick="exportAsJSON()">
+          <img src="assets/images/export.svg" width="24px" alt="">
+          <div>Exporter les donnees Iphones</div>
+        </div>
+        <div class="importItem" onclick="triggerCashFlowFileImporter()">
+          <img src="assets/images/db.svg" width="24px" alt="">
+          <div>Importer les cashflows Android</div>
+        </div>
+        <div class="importItem" onclick="triggerCollectionFileImporter()">
+          <img src="assets/images/collection.svg" width="24px" alt="" >
+          <div>Importer les collections Android</div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Export de donnees -->
     <!-- Donations -->
     <div class="donationView inactive">
-      <img src="assets/images/back.svg" alt="" width="24px" onclick="hideDonation()"/>
+      <img
+        src="assets/images/back.svg"
+        alt=""
+        width="24px"
+        onclick="hideDonation()"
+      />
       <h3>Donations</h3>
       <div class="base">
         Cette application est completement gratuite toutefois vos donations
@@ -30,22 +70,27 @@
             <div>+237 697 830 071</div>
             <div class="name">Tesse brunel</div>
           </div>
-          <img src="assets/images/copy.svg" alt="" width="48px">
+          <img src="assets/images/copy.svg" alt="" width="48px" />
         </div>
-        <div  class="donationItem" onclick="copyMTN()">
+        <div class="donationItem" onclick="copyMTN()">
           <img src="assets/images/mtn.png" alt="" width="48px" />
           <div>
             <div>+237 678 724 995</div>
             <div class="name">Hamadjoda dewa</div>
           </div>
-          <img src="assets/images/copy.svg" alt="" width="48px">
+          <img src="assets/images/copy.svg" alt="" width="48px" />
         </div>
       </div>
     </div>
     <!-- End Donations -->
     <!-- A propos -->
     <div class="info inactive">
-      <img src="assets/images/back.svg" alt="" width="24px" onclick="hideAboutView()"/>
+      <img
+        src="assets/images/back.svg"
+        alt=""
+        width="24px"
+        onclick="hideAboutView()"
+      />
       <h3>A propos</h3>
       <div class="base">
         <strong>Sekhmet</strong> est une application mobile developpe par
@@ -80,7 +125,6 @@
           </li>
         </ul>
       </div>
-     
     </div>
     <!-- Fin a propos -->
     <!-- Configuration - get Currency -->
@@ -126,20 +170,33 @@
       <div class="title_logo">
         <div class="logoSettings">
           <div class="leftLogo">
-            <img src="assets/images/info.svg" alt="" width="24px" onclick="showAboutView()"/>
-            <img src="assets/images/like.svg" alt="" width="24px" onclick="hideDonation()">
+            <img
+              src="assets/images/info.svg"
+              alt=""
+              width="24px"
+              onclick="showAboutView()"
+            />
+            <img
+              src="assets/images/like.svg"
+              alt=""
+              width="24px"
+              onclick="hideDonation()"
+            />
           </div>
-         
+
           <div class="row aic g8">
             <img src="assets/images/sekhmet.svg" alt="" width="24px" />
             <div>Sekhmet</div>
           </div>
-          <img
-            src="assets/images/settings.svg"
-            alt=""
-            width="24px"
-            onclick="setCurrency.edit()"
-          />
+          <div class="leftLogo">
+            <img src="assets/images/db.svg" alt="" width="24px" onclick="toggleDataView()"/>
+            <img
+              src="assets/images/settings.svg"
+              alt=""
+              width="24px"
+              onclick="setCurrency.edit()"
+            />
+          </div>
         </div>
         <div class="globalStat">
           <div class="item">
@@ -469,5 +526,7 @@
     <script src="scripts/stat.js"></script>
     <script src="scripts/about.js"></script>
     <script src="scripts/donation.js"></script>
+    <script src="scripts/import_export.js"></script>
+    <script src="scripts/androidPipeline.js"></script>
   </body>
 </html>

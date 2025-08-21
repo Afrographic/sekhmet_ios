@@ -202,12 +202,12 @@ class Afro {
 
   static getWeekDayNameEnglish() {
     const dayName = new Date().toLocaleString("en-US", { weekday: "long" });
-    return dayName;
+    return this.Ucase(dayName);
   }
 
   static getWeekDayNameFrench() {
     const dayName = new Date().toLocaleString("fr-FR", { weekday: "long" });
-    return dayName;
+    return this.Ucase(dayName);
   }
 
   static getWeekName(year,month,day){

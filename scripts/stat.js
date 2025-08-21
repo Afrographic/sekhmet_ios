@@ -161,10 +161,10 @@ class Stat {
   }
 
   static computeMonthYearStat(year) {
-    console.log(cashflows);
+
     let month = Afro.getMonth();
     let yearStat = [];
-    for (let i = 1; i <= month; i++) {
+    for (let i = 1; i <= 12; i++) {
       let list = [];
       let gain = 0;
       let depense = 0;
@@ -202,7 +202,7 @@ class Stat {
       months: yearStat,
     };
     //Render View
-    console.log(yearFullStat);
+
     let devise = localStorage.getItem("sekhmetCurrency");
     let currentYearView = document.querySelector("#currentYearView");
     let yearGainView = document.querySelector("#yearGainView");

@@ -170,11 +170,7 @@ input,textarea{
     display: flex;
     flex-direction: column;
     gap:16px;
-    position: fixed;
-    left: 0;
-    top:0;
     background-color: #fff;
-    height: 100vh;
     transition: 0.25s;
 }
 
@@ -556,7 +552,23 @@ li a{
     align-items: center;
 }
 
-.donationView{
+.donationView,.exportData{
     padding: 32px;
     transition: 0.25s;
+}
+
+.imports{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.importItem{
+    padding: 16px;
+    border-radius: 8px;
+    border:1px solid #dadada;
+    display: flex;
+    align-items: center;
+    gap:16px;
 }
