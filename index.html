@@ -14,6 +14,75 @@
     <script src="scripts/db.js"></script>
   </head>
   <body>
+    <!-- Donations -->
+    <div class="donationView inactive">
+      <img src="assets/images/back.svg" alt="" width="24px" onclick="hideDonation()"/>
+      <h3>Donations</h3>
+      <div class="base">
+        Cette application est completement gratuite toutefois vos donations
+        encouragerons le developpement de nouvelles fonctionnalites. Ci dessous
+        les numeros Orange Money et MTN Mobile money.
+      </div>
+      <div class="donation">
+        <div class="donationItem" onclick="copyOrange()">
+          <img src="assets/images/orange.png" alt="" width="48px" />
+          <div>
+            <div>+237 697 830 071</div>
+            <div class="name">Tesse brunel</div>
+          </div>
+          <img src="assets/images/copy.svg" alt="" width="48px">
+        </div>
+        <div  class="donationItem" onclick="copyMTN()">
+          <img src="assets/images/mtn.png" alt="" width="48px" />
+          <div>
+            <div>+237 678 724 995</div>
+            <div class="name">Hamadjoda dewa</div>
+          </div>
+          <img src="assets/images/copy.svg" alt="" width="48px">
+        </div>
+      </div>
+    </div>
+    <!-- End Donations -->
+    <!-- A propos -->
+    <div class="info inactive">
+      <img src="assets/images/back.svg" alt="" width="24px" onclick="hideAboutView()"/>
+      <h3>A propos</h3>
+      <div class="base">
+        <strong>Sekhmet</strong> est une application mobile developpe par
+        l'agence digital Afrographix Studio pour vous aider a avoir une vue
+        complete sur vos depenses et gains journalieres, mensuelles et
+        annuelles.
+      </div>
+      <h3>Collecte des donnees</h3>
+      <div class="base">
+        Nous ne collectons par vos donnees personnelles, toutes les informations
+        sont uniquement stockes dans votre telephone
+      </div>
+      <h3>Contacts</h3>
+      <div class="base">
+        Si vous avez des questions ou des suggestions, vous pouvez nous joindre
+        par mail ou par whatssapp
+        <ul>
+          <li>
+            <a
+              href="mailto: tamery.sematawy@icloud.com?subject=A propos de Sekhmet&body=Sekhmet."
+              target="_blank"
+            >
+              <img src="assets/images/email.svg" alt="" width="24px" />
+              <div>tamery.sematawy@icloud.com</div>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/+237697830071?text=Sekhmet!" target="_blank">
+              <img src="assets/images/wa.svg" alt="" width="24px" />
+              <div>+237 697 830 071</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+     
+    </div>
+    <!-- Fin a propos -->
     <!-- Configuration - get Currency -->
     <div class="currency">
       <div class="row aic g16">
@@ -22,11 +91,10 @@
       </div>
       <h1>Configuration</h1>
       <div class="base">
-        Bienvenue sur Sekhmet ,l'application qui vous mettra de surveiller avec precisions vos depenses.  
+        Bienvenue sur Sekhmet ,l'application qui vous mettra de surveiller avec
+        precisions vos depenses.
       </div>
-      <div>
-        Veuillez renseigner votre devise
-      </div>
+      <div>Veuillez renseigner votre devise</div>
       <div class="formItem">
         <div class="label">Devise</div>
         <input
@@ -48,16 +116,20 @@
       />
 
       <img
-      src="assets/images/stat.svg"
-      alt=""
-      width="52px"
-      class="statBtn"
-      onclick="goToStatView()"
-    />
+        src="assets/images/stat.svg"
+        alt=""
+        width="52px"
+        class="statBtn"
+        onclick="goToStatView()"
+      />
 
       <div class="title_logo">
         <div class="logoSettings">
-          <img src="assets/images/info.svg" alt="" width="24px" />
+          <div class="leftLogo">
+            <img src="assets/images/info.svg" alt="" width="24px" onclick="showAboutView()"/>
+            <img src="assets/images/like.svg" alt="" width="24px" onclick="hideDonation()">
+          </div>
+         
           <div class="row aic g8">
             <img src="assets/images/sekhmet.svg" alt="" width="24px" />
             <div>Sekhmet</div>
@@ -114,9 +186,9 @@
           <div class="dayStatItemTitle">
             <div class="dayStatDate">
               <div>Lundi 20 Aout 2025</div>
-              <img src="assets/images/dropdown.svg" width="30px" alt="">
+              <img src="assets/images/dropdown.svg" width="30px" alt="" />
             </div>
-            <hr>
+            <hr />
             <div class="globalStat">
               <div class="item">
                 <div>Gain</div>
@@ -187,7 +259,7 @@
           </div>
         </div>
       </div>
-      <div style="height: 85px;"></div>
+      <div style="height: 85px"></div>
     </div>
     <!-- Fin Home -->
     <!-- Creer un cashflow -->
@@ -297,17 +369,33 @@
     <!-- Year Stat -->
     <div class="yearStatView inactive">
       <div class="yearStatTitle">
-        <img src="assets/images/back.svg" alt="" width="24px" onclick="goToHomeFromStat()">
+        <img
+          src="assets/images/back.svg"
+          alt=""
+          width="24px"
+          onclick="goToHomeFromStat()"
+        />
         <div class="row jcsb aic">
-          <div class="dateToggle" id="previousYearView" onclick="Stat.renderYearStat(this)">2024</div>
+          <div
+            class="dateToggle"
+            id="previousYearView"
+            onclick="Stat.renderYearStat(this)"
+          >
+            2024
+          </div>
           <div class="row aic g16 jcc">
-            <img src="assets/images/sekhmet.svg" width="24px" alt="">
+            <img src="assets/images/sekhmet.svg" width="24px" alt="" />
             <h3 id="currentYearView" class="c_main">2025</h3>
           </div>
-          <div class="dateToggle" id="nextYearView" onclick="Stat.renderYearStat(this)">2026 </div>
+          <div
+            class="dateToggle"
+            id="nextYearView"
+            onclick="Stat.renderYearStat(this)"
+          >
+            2026
+          </div>
         </div>
-       
-        
+
         <div class="globalStat">
           <div class="item">
             <div>Gain</div>
@@ -328,9 +416,9 @@
           <div class="dayStatItemTitle">
             <div class="dayStatDate">
               <div>Lundi 20 Aout 2025</div>
-              <img src="assets/images/dropdown.svg" width="30px" alt="">
+              <img src="assets/images/dropdown.svg" width="30px" alt="" />
             </div>
-            <hr>
+            <hr />
             <div class="globalStat">
               <div class="item">
                 <div>Gain</div>
@@ -379,5 +467,7 @@
     <script src="scripts/home.js"></script>
     <script src="scripts/setCurrency.js"></script>
     <script src="scripts/stat.js"></script>
+    <script src="scripts/about.js"></script>
+    <script src="scripts/donation.js"></script>
   </body>
 </html>

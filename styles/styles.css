@@ -502,3 +502,61 @@ hr{
     font-weight: bold;
     font-size: 18px;
 }
+
+.info{
+    padding: 32px;
+    transition: 0.25s;
+}
+ul{
+    padding: 0px;
+}
+
+li{
+    display: flex;
+    gap:16px;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+li a{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+    text-decoration: none;
+    color: #1d1d1d;
+    margin-bottom: 8px;
+}
+
+.donation{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    margin-top: 16px;
+}
+
+.donationItem{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+}
+
+.donationItem .name{
+    opacity: 0.6;
+}
+
+.leftLogo{
+    display: flex;
+    gap:16px;
+    align-items: center;
+}
+
+.donationView{
+    padding: 32px;
+    transition: 0.25s;
+}

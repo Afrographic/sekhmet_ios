@@ -261,4 +261,16 @@ class Afro {
     });
     return dateComplete;
   }
+
+  static copy(content) {
+    let textarea = document.createElement("textarea");
+    textarea.value = content;
+    textarea.className = "ghost";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
 }
