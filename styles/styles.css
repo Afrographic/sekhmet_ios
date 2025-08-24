@@ -39,22 +39,22 @@ body{
 }
 /* En Loading fonts */
 h1,h2,h3{
-    font-family:"ralewayBlack" ;
+    font-family:"ralewayBlack" , Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 *{
-    font-family: "ralewayRegular";
+    font-family: "ralewayRegular" , Arial, Helvetica, sans-serif;;
     box-sizing: border-box;
 }
 
 .base{
     font-size: 16px;
     line-height: 24px;
-    font-family: "ralewayRegular";
+    font-family: "ralewayRegular", Arial, Helvetica, sans-serif;
 }
 
 .h1{
     font-size: 24px;
-    font-family: "ralewayBlack";
+    font-family: "ralewayBlack", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 /* Form Input styles */

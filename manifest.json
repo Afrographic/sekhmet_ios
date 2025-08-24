@@ -1,0 +1,21 @@
+{
+    "name":"Sekhmet",
+    "short_name":"Sekhmet",
+    "start_url":"/",
+    "display":"standalone",
+    "background_color":"#fff",
+    "theme_color":"#fff",
+    "description":"Ayez une vue complete sur vos depenses et vos gains par jour , mois et annee",
+    "icons":[
+        {
+            "src":"icons/icon-192.png",
+            "sizes":"192x192",
+            "type":"image/png"
+        },
+        {
+            "src":"icons/icon-512.png",
+            "sizes":"512x512",
+            "type":"image/png"
+        }
+    ]
+}
