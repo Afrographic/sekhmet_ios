@@ -301,7 +301,8 @@ input,textarea{
     background-color: #f6f6f6;
     position: relative;
     user-select: none;
-    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    touch-action: none;
 }
 
 .priceDate{
