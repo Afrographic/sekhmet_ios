@@ -110,6 +110,13 @@ async function deleteCashflow(id){
    }, 500);
  }
 
+ async function  show_menu_on_click(el){
+    let options = el.firstElementChild;
+    options.classList.remove("inactive");
+    await Afro.sleep(5000);
+    options.classList.add("inactive");
+ }
+
  function cancelPress(event) {
    clearTimeout(this.press_timer);
  }

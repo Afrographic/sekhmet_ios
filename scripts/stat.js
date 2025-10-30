@@ -66,6 +66,7 @@ class Stat {
         cashflowLists += `
                 <div
                 class="cahsflowItemList"
+                onclick="show_menu_on_click(this)"
                 onmousedown="startPress(this)"
                 ontouchstart="startPress(this)"
                 onmouseup="cancelPress(this)"
@@ -240,6 +241,7 @@ class Stat {
         cashflowLists += `
         <div
                 class="cahsflowItemList"
+                onclick="show_menu_on_click(this)"
                 onmousedown="startPress(this)"
                 ontouchstart="startPress(this)"
                 onmouseup="cancelPress(this)"
