@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,27 +9,27 @@
     <script src="libs/afro.js"></script>
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00AB62" />
 
     <!-- Database File -->
     <script src="scripts/db.js"></script>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
   </head>
   <body>
     <!-- Splash Screen -->
     <div class="splash">
-        <div class="centerVert">
-          <img src="assets/images/afro.svg" alt="" width="32px">
-          <div>Afrographix Studio</div>
-        </div>
-        <div class="centerVert">
-            <img src="assets/images/sekhmet.svg" alt="" width="48px">
-            <h3>Sekhmet</h3>
-        </div>
-        <div class="slogan">
-            Vos depenses en temps reel
-        </div>
+      <div class="centerVert">
+        <img src="assets/images/afro.svg" alt="" width="32px" />
+        <div>Afrographix Studio</div>
+      </div>
+      <div class="centerVert">
+        <img src="assets/images/sekhmet.svg" alt="" width="48px" />
+        <h3>Sekhmet</h3>
+      </div>
+      <div class="slogan">Vos depenses en temps reel</div>
     </div>
     <!-- Fin splash Screen -->
     <!-- Export de donnees -->
@@ -44,24 +44,34 @@
       <div class="base">
         Veuillez selectionner le type de donnees a importer
       </div>
-      <input type="file" hidden id="cashflowAndroidFileImporter" onchange="getCasflowAndroid(event)">
-      <input type="file" hidden id="collectionAndroidFileImporter" onchange="getCollectionAndroid(event)">
-      <input type="file" hidden id="dbImporter" onchange="getDb(event)">
+      <input
+        type="file"
+        hidden
+        id="cashflowAndroidFileImporter"
+        onchange="getCasflowAndroid(event)"
+      />
+      <input
+        type="file"
+        hidden
+        id="collectionAndroidFileImporter"
+        onchange="getCollectionAndroid(event)"
+      />
+      <input type="file" hidden id="dbImporter" onchange="getDb(event)" />
       <div class="imports">
         <div class="importItem" onclick="triggerDBImport()">
-          <img src="assets/images/import.svg" width="24px" alt="">
+          <img src="assets/images/import.svg" width="24px" alt="" />
           <div>Importer les donnees Iphones</div>
         </div>
         <div class="importItem" onclick="exportAsJSON()">
-          <img src="assets/images/export.svg" width="24px" alt="">
+          <img src="assets/images/export.svg" width="24px" alt="" />
           <div>Exporter les donnees Iphones</div>
         </div>
         <div class="importItem" onclick="triggerCashFlowFileImporter()">
-          <img src="assets/images/db.svg" width="24px" alt="">
+          <img src="assets/images/db.svg" width="24px" alt="" />
           <div>Importer les cashflows Android</div>
         </div>
         <div class="importItem" onclick="triggerCollectionFileImporter()">
-          <img src="assets/images/collection.svg" width="24px" alt="" >
+          <img src="assets/images/collection.svg" width="24px" alt="" />
           <div>Importer les collections Android</div>
         </div>
       </div>
@@ -207,7 +217,12 @@
             <div>Sekhmet</div>
           </div>
           <div class="leftLogo">
-            <img src="assets/images/db.svg" alt="" width="24px" onclick="toggleDataView()"/>
+            <img
+              src="assets/images/db.svg"
+              alt=""
+              width="24px"
+              onclick="toggleDataView()"
+            />
             <img
               src="assets/images/settings.svg"
               alt=""
@@ -537,8 +552,8 @@
     </div>
     <!-- End year Stat -->
     <script>
-       // Register service worker
-       if ("serviceWorker" in navigator) {
+      // Register service worker
+      if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("/sw.js")
           .then(() => console.log("Service Worker Registered"))
