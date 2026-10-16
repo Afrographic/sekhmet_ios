@@ -19,40 +19,114 @@
   }
 */
 
-body{
+
+
+:root {
+    --main: #2196F3;
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --card-color: #f5f5f5;
+    --border-color: #e7e7e7;
+}
+
+[data-theme="dark"] {
+    --bg-color: #011222;
+    --text-color: #ffffffd8;
+    --card-color: #032e44;
+    --border-color: #2d2d2d00;
+
+    li img,
+    .inverse-image,
+    img[src="assets/images/back.svg"] {
+        filter: invert(1);
+    }
+
+    .donationItem img:last-child {
+        filter: invert(1);
+    }
+
+
+    .dayStatDate img,
+    .collectionItem img {
+        filter: brightness(45);
+    }
+
+    input {
+        background: transparent;
+        color: #fff;
+    }
+
+
+    ::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    /* Track */
+
+    ::-webkit-scrollbar-track {
+        background: rgba(136, 136, 136, 0);
+    }
+
+    /* Handle */
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(136, 136, 136, 0);
+        border-radius: 2px;
+    }
+
+    /* Track */
+
+    ::-webkit-scrollbar-track {
+        background: rgba(205, 205, 205, 0.385);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(8, 8, 8, 0.629);
+        border-radius: 8px;
+    }
+
+}
+
+body {
     margin: 0;
     padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color)
 }
 
 
-:root{
-    --main:#2196F3;
-}
+
 /* Load fonts */
 @font-face {
     font-family: "ralewayBlack";
     src: url(../assets/fonts/Raleway-Black.ttf);
 }
+
 @font-face {
     font-family: "ralewayRegular";
     src: url(../assets/fonts/Raleway-Regular.ttf);
 }
+
 /* En Loading fonts */
-h1,h2,h3{
-    font-family:"ralewayBlack" , Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+h1,
+h2,
+h3 {
+    font-family: "ralewayBlack", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-*{
-    font-family: "ralewayRegular" , Arial, Helvetica, sans-serif;;
+
+* {
+    font-family: "ralewayRegular", Arial, Helvetica, sans-serif;
+    ;
     box-sizing: border-box;
 }
 
-.base{
+.base {
     font-size: 16px;
     line-height: 24px;
     font-family: "ralewayRegular", Arial, Helvetica, sans-serif;
 }
 
-.h1{
+.h1 {
     font-size: 24px;
     font-family: "ralewayBlack", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -61,46 +135,47 @@ h1,h2,h3{
 
 /* Buttons */
 
-button{
-    padding:16px 32px;
+button {
+    padding: 16px 32px;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.25s;
-    background-image: linear-gradient(90deg,#21e2f3, #2196F3 );
+    background-image: linear-gradient(90deg, #21e2f3, #2196F3);
     border: none;
     outline: none;
     color: white;
-    box-shadow:0px 5px 9px #2195f333;
+    box-shadow: 0px 5px 9px #2195f333;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
 }
 
-button:hover{
+button:hover {
     opacity: 0.7;
 }
 
-button:active{
+button:active {
     transform: scale(1.04);
 }
 
-.secondBtn{
-    padding:16px 32px;
+.secondBtn {
+    padding: 16px 32px;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.25s;
     border: 1px solid var(--main);
-    color:  var(--main);
+    color: var(--main);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.secondBtn:active{
+.secondBtn:active {
     transform: scale(1.04);
 }
+
 /*  */
 
 .formItem .label {
@@ -108,10 +183,17 @@ button:active{
     margin-bottom: 6px;
 }
 
+#selectedCollectionTextView,
+.cashflowType .activated,
+.cashflowType .disabled {
+    cursor: pointer;
+}
+
 .formItem {
-    border: 1px solid #d1d1d1;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 8px;
+    background-color: var(--card-color);
 }
 
 .formItem input {
@@ -120,61 +202,63 @@ button:active{
     width: 100%;
 }
 
-input,textarea{
+input,
+textarea {
     font-size: 16px;
 }
+
 /* End form input styles */
 
-.createCashFlow{
+.createCashFlow {
     display: flex;
     flex-direction: column;
-    gap:16px;
-    padding:16px;
+    gap: 16px;
+    padding: 16px;
     transition: 0.25s;
 }
 
-.formCreateCashflow{
+.formCreateCashflow {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.cashflowType{
+.cashflowType {
     display: flex;
-    gap:16px;
+    gap: 16px;
 }
 
-.cashflowType div{
-    flex:1;
-    padding:16px;
+.cashflowType div {
+    flex: 1;
+    padding: 16px;
     text-align: center;
     border-radius: 8px;
     transition: 0.25s;
 }
 
-.cashflowType div.activated{
+.cashflowType div.activated {
     background-color: var(--main);
-    color:#fff;
+    color: #fff;
 }
 
-.row{
+.row {
     display: flex;
     align-items: center;
 }
-.g16{
-    gap:16px;
+
+.g16 {
+    gap: 16px;
 }
 
-.collections{
+.collections {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:16px;
-    background-color: #fff;
+    gap: 16px;
     transition: 0.25s;
 }
 
-.inactive{
+.inactive {
     transform: translateX(-50px);
     opacity: 0;
     pointer-events: none;
@@ -183,93 +267,92 @@ input,textarea{
     overflow: hidden;
 }
 
-.collectionItems{
+.collectionItems {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.collectionItem{
+.collectionItem {
     padding: 16px;
-    background-color: #f6f6f6;
+    background-color: var(--card-color);
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.c_main{
+.c_main {
     color: var(--main);
 }
 
-.back{
+.back {
     padding: 16px;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
-    top:0;
-    background-color: #fff;
+    top: 0;
 }
 
-.emptyCollections{
+.emptyCollections {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
     padding: 32px;
     align-items: center;
 }
 
-#selectedCollectionTextViewId{
+#selectedCollectionTextViewId {
     position: fixed;
     opacity: 0;
     pointer-events: none;
 }
 
-.f1{
-    flex:1;
+.f1 {
+    flex: 1;
 }
 
-.p8{
+.p8 {
     padding: 8px;
 }
 
-#removeSelectedCollection.active{
+#removeSelectedCollection.active {
     opacity: 1;
 }
 
-#removeSelectedCollection.disable{
+#removeSelectedCollection.disable {
     opacity: 0;
 }
 
-.home{
+.home {
     display: flex;
     transition: 0.25s;
     flex-direction: column;
 }
 
-.title_logo{
+.title_logo {
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
     padding: 16px;
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    background-color: #fff;
+    background-color: var(--card-color);
     z-index: 1;
 }
 
-.logoSettings{
+.logoSettings {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap:16px;
+    gap: 16px;
 }
 
-.yearStatView{
+.yearStatView {
     transition: 0.25s;
 }
 
-.addCashflowButton{
+.addCashflowButton {
     position: fixed;
     bottom: 16px;
     right: 16px;
@@ -277,327 +360,344 @@ input,textarea{
     z-index: 1;
 }
 
-.statBtn{
+.statBtn {
     position: fixed;
     bottom: 107px;
     right: 38px;
     transition: 0.25s;
-    z-index: 1; 
+    z-index: 1;
 }
 
-.listCashflows{
+.listCashflows {
     display: flex;
     flex-direction: column;
     padding: 16px;
-    gap:8px;
+    gap: 8px;
 }
 
-.cahsflowItemList{
-    padding:16px;
+.cahsflowItemList {
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:4px;
+    gap: 4px;
     border-radius: 4px;
-    background-color: #f6f6f6;
+    background-color: var(--bg-color);
     position: relative;
     user-select: none;
     -webkit-user-select: none;
     touch-action: none;
 }
 
-.priceDate{
+.priceDate {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.priceDate .date{
+.priceDate .date {
     font-size: 12px;
-    color:grey;
-}
-.priceDate  .price{
-    font-family: "ralewayBlack";
-}
-.gain{
-    color:var(--main);
+    color: grey;
 }
 
-.cahsflowItemList .options{
+.priceDate .price {
+    font-family: "ralewayBlack";
+}
+
+.gain {
+    color: var(--main);
+}
+
+.cahsflowItemList .options {
     display: flex;
-    gap:16px;
+    gap: 16px;
     transition: 0.25s;
     position: absolute;
     right: 16px;
-    top:16px;
+    top: 16px;
 }
 
-.cahsflowItemList .options img{
+.cahsflowItemList .options img {
     width: 36px;
 }
 
-.currency{
-    padding:32px;
+.currency {
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
     transition: 0.25s;
 }
 
-.aic{
+.aic {
     align-items: center;
 }
 
-.g8{
-    gap:8px;
+.g8 {
+    gap: 8px;
 }
 
-.globalStat{
+.globalStat {
     display: flex;
     justify-content: space-between;
 }
 
-.globalStat .item{
+.globalStat .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:4px;
+    gap: 4px;
 }
 
-.globalStat .item div:first-child{
+.globalStat .item div:first-child {
     font-size: 11px;
-    color:grey;
+    color: grey;
 }
 
-.globalStat .item div:last-child{
+.globalStat .item div:last-child {
     font-size: 14px;
     font-weight: bold;
 }
 
-.jcsb{
+.jcsb {
     justify-content: space-between;
 }
 
-.dayStatCashflow{
+.dayStatCashflow {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
     transition: 0.25s;
 }
 
-.dayStats{
+.dayStats {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.dayStatItem{
+.dayStatItem {
     padding: 16px;
-    border:1px solid #ebebeb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
+    background-color: var(--card-color);
 }
 
-.dayStatItemTitle{
+.dayStatItemTitle {
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
 }
 
-.dayStatDate{
+.dayStatDate {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.dayStatDate img{
+.dayStatDate img {
     transition: 0.25s;
 }
 
-.yearStatTitle{
+.dateToggle {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.dateToggle:hover {
+    transform: scale(1.4);
+    opacity: 0.7;
+}
+
+.yearStatTitle {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding:16px;
-    border-bottom: 1px solid #e3e3e3;
-    gap:16px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 16px;
     position: sticky;
-    top:0;
-    background-color: #fff;
+    top: 0;
+    background-color: var(--bg-color);
     z-index: 1;
 }
 
-.yearStatTitle h3{
+.yearStatTitle h3 {
     margin: 0;
     text-align: center;
     display: flex;
-    gap:16px;
+    gap: 16px;
     align-items: center;
     justify-content: center;
 }
 
-.jcc{
+.jcc {
     justify-content: center;
 }
 
-.yearStat{
+.yearStat {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:8px
+    gap: 8px
 }
 
-hr{
+hr {
     width: 100%;
     opacity: 0.2;
 }
 
-.yearStatMonthsView{
+.yearStatMonthsView {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.dateToggle{
+.dateToggle {
     font-size: 12px;
-    padding:8px;
-    border:1px solid #aaa;
+    padding: 8px;
+    border: 1px solid #aaa;
     border-radius: 8px;
     opacity: 0.6;
 }
 
-.homeCollection{
+.homeCollection {
     display: flex;
     overflow: auto;
     padding: 16px 0px;
 }
 
-.homeCollectionItem{
-    color:white;
+.homeCollectionItem {
+    color: white;
     background-color: var(--main);
-    padding: 16px 32px;
+    padding: 8px 16px;
     border-radius: 8px;
     margin-left: 16px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap:8px;
 }
 
-.homeCollection .homeCollectionItem:last-child{
+.homeCollection .homeCollectionItem:last-child {
     margin-right: 16px;
 }
 
-.homeCollectionItem div:first-child{
+.homeCollectionItem div:first-child {
     opacity: 0.6;
 }
 
-.homeCollectionItem div:last-child{
+.homeCollectionItem div:last-child {
     font-weight: bold;
     font-size: 18px;
 }
 
-.info{
+.info {
     padding: 32px;
     transition: 0.25s;
 }
-ul{
+
+ul {
     padding: 0px;
 }
 
-li{
+li {
     display: flex;
-    gap:16px;
+    gap: 16px;
     align-items: center;
     margin: 0px;
     padding: 0px;
 }
 
-li a{
+li a {
     display: flex;
     align-items: center;
-    gap:8px;
+    gap: 8px;
     padding: 8px;
     border-radius: 8px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--border-color);
     text-decoration: none;
-    color: #1d1d1d;
+    color: var(--text-color);
     margin-bottom: 8px;
+    background-color: var(--card-color);
 }
 
-.donation{
+.donation {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
     margin-top: 16px;
 }
 
-.donationItem{
+.donationItem {
     display: flex;
     justify-content: space-between;
     padding: 16px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
+    background-color: var(--card-color);
 }
 
-.donationItem .name{
+.donationItem .name {
     opacity: 0.6;
 }
 
-.leftLogo{
+.leftLogo {
     display: flex;
-    gap:16px;
+    gap: 16px;
     align-items: center;
 }
 
-.donationView,.exportData{
+.donationView,
+.exportData {
     padding: 32px;
     transition: 0.25s;
 }
 
-.imports{
+.imports {
     margin-top: 16px;
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.importItem{
+.importItem {
     padding: 16px;
     border-radius: 8px;
-    border:1px solid #dadada;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-color);
     display: flex;
     align-items: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.centerVert{
+.centerVert {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.splash{
+.splash {
     transition: 0.5s;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--bg-color);
     z-index: 2;
     justify-content: space-between;
     padding: 32px;
     align-items: center;
 }
 
-.slogan{
+.slogan {
     font-size: 12px;
     color: grey;
 }

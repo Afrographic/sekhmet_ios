@@ -1,0 +1,29 @@
+@media screen and (min-width:1080px) {
+
+    .createCashFlow,
+    .currency,
+    .donationView,
+    .exportData,
+    .info,
+    .collections {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button {
+        display: block;
+    }
+
+    .dayStats,
+    .yearStatMonthsView {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sekhmet</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
     <link rel="icon" href="assets/images/sekhmet_fav.png" />
     <script src="libs/afro.js"></script>
     <script src="libs/jsstore.js"></script>
@@ -22,7 +23,12 @@
     <!-- Splash Screen -->
     <div class="splash">
       <div class="centerVert">
-        <img src="assets/images/afro.svg" alt="" width="32px" />
+        <img
+          src="assets/images/afro.svg"
+          alt=""
+          width="32px"
+          class="inverse-image"
+        />
         <div>Afrographix Studio</div>
       </div>
       <div class="centerVert">
@@ -175,7 +181,9 @@
           id="devise"
         />
       </div>
-      <button onclick="setCurrency.save()">Enregistrer</button>
+      <div class="button-wrapper">
+        <button onclick="setCurrency.save()">Enregistrer</button>
+      </div>
     </div>
     <!-- Home -->
     <div class="home">
@@ -407,8 +415,9 @@
           </div>
         </div>
       </div>
-
-      <button onclick="createCashflow()">Enregistrer</button>
+      <div class="button-wrapper">
+        <button onclick="createCashflow()">Enregistrer</button>
+      </div>
     </div>
     <!-- Fin Creer un cashflow -->
 
@@ -429,6 +438,23 @@
           Veuillez selectionner la collection sur la liste ci dessous
         </div>
       </div>
+
+      <hr />
+
+      <div class="formItem">
+        <div class="label">Nom de la collection</div>
+        <input
+          type="text"
+          placeholder="Nom de la collection"
+          id="nomCollectionInput"
+        />
+      </div>
+      <div class="button-wrapper">
+        <div class="secondBtn" onclick="createCollection()">
+          Creer une collection
+        </div>
+      </div>
+      <hr />
       <div class="collectionItems">
         <div class="emptyCollections">
           <img src="assets/images/empty.svg" width="48px" alt="" />
@@ -442,17 +468,6 @@
           </div>
         </div> -->
         <!-- End Collection template -->
-      </div>
-      <div class="formItem">
-        <div class="label">Nom de la collection</div>
-        <input
-          type="text"
-          placeholder="Nom de la collection"
-          id="nomCollectionInput"
-        />
-      </div>
-      <div class="secondBtn" onclick="createCollection()">
-        Creer une collection
       </div>
     </div>
     <!-- Fin Collections -->
@@ -553,12 +568,12 @@
     <!-- End year Stat -->
     <script>
       // Register service worker
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then(() => console.log("Service Worker Registered"))
-          .catch((err) => console.error("SW registration failed", err));
-      }
+      // if ("serviceWorker" in navigator) {
+      //   navigator.serviceWorker
+      //     .register("/sw.js")
+      //     .then(() => console.log("Service Worker Registered"))
+      //     .catch((err) => console.error("SW registration failed", err));
+      // }
     </script>
     <script src="scripts/add_cash_flow.js"></script>
     <script src="scripts/edit_cash_flow.js"></script>
@@ -571,5 +586,19 @@
     <script src="scripts/import_export.js"></script>
     <script src="scripts/androidPipeline.js"></script>
     <script src="scripts/splash.js"></script>
+
+    <script>
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute(
+        "data-theme",
+        dark ? "dark" : "light",
+      );
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          window.location.reload();
+          this.themeService.setTheme(e.matches ? "dark" : "light");
+        });
+    </script>
   </body>
 </html>
