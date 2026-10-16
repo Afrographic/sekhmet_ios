@@ -2,59 +2,62 @@ let addCashflowButton = document.querySelector(".addCashflowButton");
 let createCashFlow = document.querySelector(".createCashFlow");
 let home = document.querySelector(".home");
 
-function goToCreateCashflowView(){
-    let editTitle = document.getElementById("editTitle");
-    editTitle.innerHTML = "Creer un cashflow";
+function goToCreateCashflowView() {
+  let editTitle = document.getElementById("editTitle");
+  editTitle.innerHTML = "Creer un cashflow";
 
-    let nomCashflowInput = document.querySelector("#nomCashflowInput");
-    let prixCashflowInput = document.querySelector("#prixCashflowInput");
-    nomCashflowInput.value="";
-    prixCashflowInput.value="";
-    nomCashflowInput.focus();
-    addCashflowButton.classList.add("inactive");
-    home.classList.add("inactive");
-    createCashFlow.classList.remove("inactive");
-    setDepense();
-    removeSelectedCollection(null);
+  const language = navigator.language;
+  if (!language.startsWith("fr")) {
+    editTitle.innerHTML = "Create a cashflow";
+  }
 
-    //Scroll to top position
-    let html = document.querySelector("html");
-    html.scrollTop = 0;
+  let nomCashflowInput = document.querySelector("#nomCashflowInput");
+  let prixCashflowInput = document.querySelector("#prixCashflowInput");
+  nomCashflowInput.value = "";
+  prixCashflowInput.value = "";
+  nomCashflowInput.focus();
+  addCashflowButton.classList.add("inactive");
+  home.classList.add("inactive");
+  createCashFlow.classList.remove("inactive");
+  setDepense();
+  removeSelectedCollection(null);
+
+  //Scroll to top position
+  let html = document.querySelector("html");
+  html.scrollTop = 0;
 }
 
-function goToStatView(){
-    let home = document.querySelector(".home");
-    let yearStatView = document.querySelector(".yearStatView");
-    home.classList.toggle("inactive");
-    yearStatView.classList.toggle("inactive");
+function goToStatView() {
+  let home = document.querySelector(".home");
+  let yearStatView = document.querySelector(".yearStatView");
+  home.classList.toggle("inactive");
+  yearStatView.classList.toggle("inactive");
 }
 
+function preventBrowserContextMenu() {
+  let cahsflowItemList = document.querySelectorAll(".cahsflowItemList");
+  for (let i = 0; i <= cahsflowItemList.length - 1; i++) {
+    let item = cahsflowItemList[i];
+    item.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
+  }
+}
 
-
-function preventBrowserContextMenu(){
-    let cahsflowItemList = document.querySelectorAll(".cahsflowItemList");
-    for(let i = 0 ; i<=cahsflowItemList.length-1;i++){
-        let item = cahsflowItemList[i];
-        item.addEventListener("contextmenu",(e)=>{
-            e.preventDefault();
-        })
+async function renderCashflow() {
+  await init_data();
+  let listCashflows = document.querySelector(".listCashflows");
+  listCashflows.innerHTML = "";
+  return;
+  for (let i = 0; i <= cashflows.length - 1; i++) {
+    let gain = "gain";
+    let sign = "+";
+    if (cashflows[i].isDepense == 1) {
+      gain = "";
+      sign = "-";
     }
-}
 
-async function renderCashflow(){
-    await init_data();
-    let listCashflows = document.querySelector(".listCashflows");
-    listCashflows.innerHTML = "";
-    return;
-    for(let i = 0 ; i<=cashflows.length - 1;i++){
-        let gain= "gain";
-        let sign = "+";
-        if(cashflows[i].isDepense == 1){
-            gain="";
-            sign="-";
-        }
-        
-        listCashflows.innerHTML+= `
+    listCashflows.innerHTML += `
         <div class="cahsflowItemList" onmousedown="startPress(this)"
         ontouchstart="startPress(this)" onmouseup="cancelPress(this)" onmouseleave="cancelPress(this)"
         ontouchend="cancelPress(this)" ontouchcancel="cancelPress(this)">
@@ -68,55 +71,55 @@ async function renderCashflow(){
                 <div class="date">${Afro.Ucase(cashflows[i].fullDateFrench)}</div>
             </div>
         </div>
-        `
-        preventBrowserContextMenu();
-    }
+        `;
+    preventBrowserContextMenu();
+  }
 }
 renderCashflow();
 
-function editCashflow(id){
-    let index = -1;
-    for(let i = 0 ;i<=cashflows.length-1;i++){
-        if(cashflows[i].id == id){
-            index = i;
-        }
+function editCashflow(id) {
+  let index = -1;
+  for (let i = 0; i <= cashflows.length - 1; i++) {
+    if (cashflows[i].id == id) {
+      index = i;
     }
-    EditCashFlow.initView(index);
+  }
+  EditCashFlow.initView(index);
 }
 
-async function deleteCashflow(id){
-    let index = -1;
-    for(let i = 0 ;i<=cashflows.length-1;i++){
-        if(cashflows[i].id == id){
-            index = i;
-        }
+async function deleteCashflow(id) {
+  let index = -1;
+  for (let i = 0; i <= cashflows.length - 1; i++) {
+    if (cashflows[i].id == id) {
+      index = i;
     }
-    if(confirm("Voulez vous vraiment supprimer l'enregistrement?")){
-        cashflows.splice(index,1);
-        await updateDB(cashflows);
-        Stat.compute();
-    }
+  }
+  if (confirm("Voulez vous vraiment supprimer l'enregistrement?")) {
+    cashflows.splice(index, 1);
+    await updateDB(cashflows);
+    Stat.compute();
+  }
 }
 
 // Manage casflow menu on long press
- // Show menu
- let press_timer;
- function startPress(el) {
-   this.press_timer = setTimeout(async () => {
+// Show menu
+let press_timer;
+function startPress(el) {
+  this.press_timer = setTimeout(async () => {
     let options = el.firstElementChild;
     options.classList.remove("inactive");
     await Afro.sleep(5000);
     options.classList.add("inactive");
-   }, 500);
- }
+  }, 500);
+}
 
- async function  show_menu_on_click(el){
-    let options = el.firstElementChild;
-    options.classList.remove("inactive");
-    await Afro.sleep(5000);
-    options.classList.add("inactive");
- }
+async function show_menu_on_click(el) {
+  let options = el.firstElementChild;
+  options.classList.remove("inactive");
+  await Afro.sleep(5000);
+  options.classList.add("inactive");
+}
 
- function cancelPress(event) {
-   clearTimeout(this.press_timer);
- }
+function cancelPress(event) {
+  clearTimeout(this.press_timer);
+}

@@ -21,6 +21,11 @@ class Stat {
     let year = Afro.getYear();
     let month = Afro.getMonth();
     let monthName = Afro.getMonthFrench();
+
+    const language = navigator.language;
+    if (!language.startsWith("fr")) {
+      monthName = Afro.getMonthEnglish();
+    }
     let day = Afro.getDay();
     let devise = localStorage.getItem("sekhmetCurrency");
     for (let i = 1; i <= day; i++) {
@@ -85,8 +90,8 @@ class Stat {
                     <div>${dayGroup[i].cashflows[j].name}</div>
                     <div class="priceDate">
                         <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(
-          dayGroup[i].cashflows[j].prix
-        )} ${setCurrency.currency}</div>
+                          dayGroup[i].cashflows[j].prix,
+                        )} ${setCurrency.currency}</div>
                         <div class="date"> ${
                           dayGroup[i].cashflows[j].time
                         }</div>
@@ -94,33 +99,43 @@ class Stat {
                 </div>
                 `;
       }
+      let gainLabel = "Gain";
+      let depenseLabel = "Depense";
+      let epargneLabel = "Epargne";
+
+      const language = navigator.language;
+      if (!language.startsWith("fr")) {
+        gainLabel = "Earnings";
+        depenseLabel = "Expenses";
+        epargneLabel = "Savings";
+      }
 
       dayStats.innerHTML += `
       <div class="dayStatItem">
       <div class="dayStatItemTitle">
         <div class="dayStatDate">
           <div> <span class="c_main">${dayGroup[i].dayName}</span>, ${
-        dayGroup[i].date
-      }</div>
+            dayGroup[i].date
+          }</div>
         </div>
         <hr>
         <div class="globalStat">
           <div class="item">
-            <div>Gain</div>
+            <div>${gainLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              dayGroup[i].gain
+              dayGroup[i].gain,
             )} ${devise}</div>
           </div>
           <div class="item">
-            <div>Depense</div>
+            <div>${depenseLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              dayGroup[i].depense
+              dayGroup[i].depense,
             )} ${devise}</div>
           </div>
           <div class="item">
-            <div>Epargne</div>
+            <div>${epargneLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              dayGroup[i].epargne
+              dayGroup[i].epargne,
             )} ${devise}</div>
           </div>
         </div>
@@ -154,15 +169,14 @@ class Stat {
 
     totalGainView.innerHTML = `${Afro.formatNumWithWhiteSpace(gain)} ${devise}`;
     totalDepenseView.innerHTML = `${Afro.formatNumWithWhiteSpace(
-      depense
+      depense,
     )} ${devise}`;
     TotalEpargneView.innerHTML = `${Afro.formatNumWithWhiteSpace(
-      epargne
+      epargne,
     )} ${devise}`;
   }
 
   static computeMonthYearStat(year) {
-
     let month = Afro.getMonth();
     let yearStat = [];
     for (let i = 1; i <= 12; i++) {
@@ -217,13 +231,13 @@ class Stat {
     previousYearView.innerHTML = `${year - 1}`;
     nextYearView.innerHTML = `${year + 1}`;
     yearGainView.innerHTML = `${Afro.formatNumWithWhiteSpace(
-      yearFullStat.gain
+      yearFullStat.gain,
     )} ${devise}`;
     yearDepenseView.innerHTML = `${Afro.formatNumWithWhiteSpace(
-      yearFullStat.depense
+      yearFullStat.depense,
     )} ${devise}`;
     yearEpargneView.innerHTML = `${Afro.formatNumWithWhiteSpace(
-      yearFullStat.epargne
+      yearFullStat.epargne,
     )} ${devise}`;
 
     //render months Cashflow
@@ -260,14 +274,25 @@ class Stat {
                     <div>${yearStat[i].cashflows[j].name}</div>
                     <div class="priceDate">
                         <div class="price ${gain}" >${sign}${Afro.formatNumWithWhiteSpace(
-          yearStat[i].cashflows[j].prix
-        )} ${setCurrency.currency}</div>
+                          yearStat[i].cashflows[j].prix,
+                        )} ${setCurrency.currency}</div>
                         <div class="date"> ${
                           yearStat[i].cashflows[j].time
                         }</div>
                     </div>
                 </div>
         `;
+      }
+
+      let gainLabel = "Gain";
+      let depenseLabel = "Depense";
+      let epargneLabel = "Epargne";
+
+      const language = navigator.language;
+      if (!language.startsWith("fr")) {
+        gainLabel = "Earnings";
+        depenseLabel = "Expenses";
+        epargneLabel = "Savings";
       }
 
       yearStatMonthsView.innerHTML += `
@@ -280,21 +305,21 @@ class Stat {
         <hr>
         <div class="globalStat">
           <div class="item">
-            <div>Gain</div>
+            <div>${gainLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              yearStat[i].gain
+              yearStat[i].gain,
             )} ${devise}</div>
           </div>
           <div class="item">
-            <div>Depense</div>
+            <div>${depenseLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              yearStat[i].depense
+              yearStat[i].depense,
             )} ${devise}</div>
           </div>
           <div class="item">
-            <div>Epargne</div>
+            <div>${epargneLabel}</div>
             <div>${Afro.formatNumWithWhiteSpace(
-              yearStat[i].epargne
+              yearStat[i].epargne,
             )} ${devise}</div>
           </div>
         </div>
@@ -316,14 +341,14 @@ class Stat {
     collections = Afro.sort(collections);
 
     //Compute stat
-    for(let i = 0 ; i<=collections.length-1;i++){
+    for (let i = 0; i <= collections.length - 1; i++) {
       let gain = 0;
       let depense = 0;
-      for(let j = 0 ; j<= cashflows.length -1 ;j++){
-        if(cashflows[j].collectionId == collections[i].id){
-          if( cashflows[j].isDepense == 1){
+      for (let j = 0; j <= cashflows.length - 1; j++) {
+        if (cashflows[j].collectionId == collections[i].id) {
+          if (cashflows[j].isDepense == 1) {
             depense += cashflows[j].prix;
-          }else{
+          } else {
             gain += cashflows[j].prix;
           }
         }
@@ -332,18 +357,17 @@ class Stat {
       collections[i].depense = depense;
     }
 
-    
     let homeCollection = document.querySelector(".homeCollection");
-    homeCollection.innerHTML ="";
-    for(let i = 0 ; i<=collections.length-1;i++){
+    homeCollection.innerHTML = "";
+    for (let i = 0; i <= collections.length - 1; i++) {
       homeCollection.innerHTML += `
       <div class="homeCollectionItem">
         <div>${collections[i].name}</div>
         <div>${Afro.formatNumWithWhiteSpace(collections[i].depense)} ${this.devise}</div>
       </div>
-      `
+      `;
     }
-    if(collections.length == 0){
+    if (collections.length == 0) {
       homeCollection.classList.add("inactive");
     }
   }

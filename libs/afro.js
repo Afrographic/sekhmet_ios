@@ -210,17 +210,31 @@ class Afro {
     return this.Ucase(dayName);
   }
 
-  static getWeekName(year,month,day){
-    const date = new Date(year,month-1,day);
-    return date.toLocaleString("fr-FR", { weekday: "long" });
+  static getWeekName(year, month, day) {
+    const date = new Date(year, month - 1, day);
+
+    const language = navigator.language;
+    if (!language.startsWith("fr")) {
+      return date.toLocaleString("en-US", { weekday: "long" });
+    } else {
+      return date.toLocaleString("fr-FR", { weekday: "long" });
+    }
   }
 
-  static getMonthNameFromMontIdAndYear(month,year){
-    const date = new Date(year,month-1,1);
-    const dateComplete =date.toLocaleDateString("fr-FR", {
+  static getMonthNameFromMontIdAndYear(month, year) {
+    const date = new Date(year, month - 1, 1);
+    let dateComplete = date.toLocaleDateString("fr-FR", {
       year: "numeric",
       month: "long",
     });
+
+    const language = navigator.language;
+    if (!language.startsWith("fr")) {
+      dateComplete = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+      });
+    }
     return dateComplete;
   }
 

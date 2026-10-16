@@ -61,16 +61,21 @@ function removeSelectedCollection(e) {
   }
 
   let selectedCollectionTextView = document.querySelector(
-    "#selectedCollectionTextView"
+    "#selectedCollectionTextView",
   );
   let selectedCollectionTextViewId = document.querySelector(
-    "#selectedCollectionTextViewId"
+    "#selectedCollectionTextViewId",
   );
   let removeSelectedCollection = document.querySelector(
-    "#removeSelectedCollection"
+    "#removeSelectedCollection",
   );
 
   selectedCollectionTextView.innerHTML = "Cliquez pour selectionner";
+
+  const language = navigator.language;
+  if (!language.startsWith("fr")) {
+    selectedCollectionTextView.innerHTML = "Click to select";
+  }
   selectedCollectionTextViewId.innerHTML = "";
   removeSelectedCollection.classList.add("disable");
   removeSelectedCollection.classList.remove("active");
@@ -80,7 +85,7 @@ async function createCashflow() {
   let nomCashflowInput = document.querySelector("#nomCashflowInput");
   let prixCashflowInput = document.querySelector("#prixCashflowInput");
   let selectedCollectionTextViewId = document.querySelector(
-    "#selectedCollectionTextViewId"
+    "#selectedCollectionTextViewId",
   );
 
   if (nomCashflowInput.value.trim().length == 0) {
@@ -98,7 +103,7 @@ async function createCashflow() {
 
   let editTitle = document.getElementById("editTitle");
   if (editTitle.innerHTML == "Edition") {
-    EditCashFlow.edit(name,collectionId,prix);
+    EditCashFlow.edit(name, collectionId, prix);
   } else {
     let cashflowItem = {
       name: name,

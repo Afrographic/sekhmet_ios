@@ -35,7 +35,7 @@
         <img src="assets/images/sekhmet.svg" alt="" width="48px" />
         <h3>Sekhmet</h3>
       </div>
-      <div class="slogan">Vos depenses en temps reel</div>
+      <div class="slogan" id="sloganLabel">Vos depenses en temps reel</div>
     </div>
     <!-- Fin splash Screen -->
     <!-- Export de donnees -->
@@ -46,9 +46,9 @@
         width="24px"
         onclick="toggleDataView()"
       />
-      <h3>Migration et sauvegarde des donnees</h3>
-      <div class="base">
-        Veuillez selectionner le type de donnees a importer
+      <h3 id="dataMigrationTitleLabel">Migration et sauvegarde des donnees</h3>
+      <div class="base" id="selectImportTypeLabel">
+        Veuillez selectionner le type de donnees a importer/Exporter
       </div>
       <input
         type="file"
@@ -66,19 +66,19 @@
       <div class="imports">
         <div class="importItem" onclick="triggerDBImport()">
           <img src="assets/images/import.svg" width="24px" alt="" />
-          <div>Importer les donnees Iphones</div>
+          <div id="importIphoneDataLabel">Importer les donnees Iphones</div>
         </div>
         <div class="importItem" onclick="exportAsJSON()">
           <img src="assets/images/export.svg" width="24px" alt="" />
-          <div>Exporter les donnees Iphones</div>
+          <div id="ExportIphoneDataLabel">Exporter les donnees Iphones</div>
         </div>
         <div class="importItem" onclick="triggerCashFlowFileImporter()">
           <img src="assets/images/db.svg" width="24px" alt="" />
-          <div>Importer les cashflows Android</div>
+          <div id="importAndroidCashflowLabel">Importer les cashflows Android</div>
         </div>
         <div class="importItem" onclick="triggerCollectionFileImporter()">
           <img src="assets/images/collection.svg" width="24px" alt="" />
-          <div>Importer les collections Android</div>
+          <div id="importAndroidCollectionLabel">Importer les collections Android</div>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@
         onclick="hideDonation()"
       />
       <h3>Donations</h3>
-      <div class="base">
+      <div class="base" id="donationDescriptionLabel">
         Cette application est completement gratuite toutefois vos donations
         encouragerons le developpement de nouvelles fonctionnalites. Ci dessous
         les numeros Orange Money et MTN Mobile money.
@@ -125,22 +125,25 @@
         width="24px"
         onclick="hideAboutView()"
       />
-      <h3>A propos</h3>
-      <div class="base">
+      <h3 id="aProposLabel">A propos</h3>
+      <div class="base" id="aProposDescription">
         <strong>Sekhmet</strong> est une application mobile developpe par
         l'agence digital Afrographix Studio pour vous aider a avoir une vue
         complete sur vos depenses et gains journalieres, mensuelles et
         annuelles.
       </div>
-      <h3>Collecte des donnees</h3>
-      <div class="base">
+      <h3 id="collecteDonneesLabel">Collecte des donnees</h3>
+      <div class="base" id="collecteDesDonneesDescriptionLabel">
         Nous ne collectons par vos donnees personnelles, toutes les informations
         sont uniquement stockes dans votre telephone
       </div>
       <h3>Contacts</h3>
       <div class="base">
-        Si vous avez des questions ou des suggestions, vous pouvez nous joindre
-        par mail ou par whatssapp
+        <div id="contactDescriptionLabel">
+          Si vous avez des questions ou des suggestions, vous pouvez nous
+          joindre par mail ou par whatssapp
+        </div>
+
         <ul>
           <li>
             <a
@@ -172,7 +175,7 @@
         Bienvenue sur Sekhmet ,l'application qui vous mettra de surveiller avec
         precisions vos depenses.
       </div>
-      <div>Veuillez renseigner votre devise</div>
+      <div id="deviseLabel">Veuillez renseigner votre devise</div>
       <div class="formItem">
         <div class="label">Devise</div>
         <input
@@ -241,15 +244,15 @@
         </div>
         <div class="globalStat">
           <div class="item">
-            <div>Gain</div>
+            <div id="gainLabel">Gain</div>
             <div id="totalGainView">90 000 000 XAF</div>
           </div>
           <div class="item">
-            <div>Depense</div>
+            <div id="depenseLabel">Depense</div>
             <div id="totalDepenseView">90 000 000 XAF</div>
           </div>
           <div class="item">
-            <div>Epargne</div>
+            <div id="epargneLabel">Epargne</div>
             <div id="TotalEpargneView">90 000 000 XAF</div>
           </div>
         </div>
@@ -367,11 +370,11 @@
       </div>
 
       <img src="assets/images/sekhmet.svg" width="48px" alt="" />
-      <h1 id="editTitle">Creer un cashflow</h1>
-      <div>Veuillez remplir le formulaire ci-dessous</div>
+      <h1 id="editTitle" class="createCashflowTitle">Creer un cashflow</h1>
+      <div id="cashflowCreationDescription">Veuillez remplir le formulaire ci-dessous</div>
       <div class="formCreateCashflow">
         <div class="formItem">
-          <div class="label">Nom</div>
+          <div class="label" id="nomLabel">Nom</div>
           <input
             type="text"
             placeholder="Exemple : Achat d'une chaussure "
@@ -379,7 +382,7 @@
           />
         </div>
         <div class="formItem">
-          <div class="label">Prix</div>
+          <div class="label" id="priceLabel">Prix</div>
           <input
             type="number"
             placeholder="Prix"
@@ -398,10 +401,10 @@
           </div>
         </div>
         <div class="formItem">
-          <div class="label">Collection (facultatif)</div>
+          <div class="label" id="collectionLabel">Collection (facultatif)</div>
           <div class="row g16 p8" onclick="pickCollection()">
             <img src="assets/images/collection.svg" width="24px" alt="" />
-            <div id="selectedCollectionTextView">Cliquez pour selectionner</div>
+            <div id="selectedCollectionTextView" class="clickToSelect">Cliquez pour selectionner</div>
             <div id="selectedCollectionTextViewId">0</div>
             <div class="f1"></div>
             <img
@@ -416,7 +419,7 @@
         </div>
       </div>
       <div class="button-wrapper">
-        <button onclick="createCashflow()">Enregistrer</button>
+        <button onclick="createCashflow()" id="saveCashflow">Enregistrer</button>
       </div>
     </div>
     <!-- Fin Creer un cashflow -->
@@ -434,7 +437,7 @@
       <div>
         <img src="assets/images/collection.svg" width="48px" alt="" />
         <h2>Collections</h2>
-        <div class="base">
+        <div class="base" id="collectionDescription">
           Veuillez selectionner la collection sur la liste ci dessous
         </div>
       </div>
@@ -442,7 +445,7 @@
       <hr />
 
       <div class="formItem">
-        <div class="label">Nom de la collection</div>
+        <div class="label" id="collectionNameLabel">Nom de la collection</div>
         <input
           type="text"
           placeholder="Nom de la collection"
@@ -450,7 +453,7 @@
         />
       </div>
       <div class="button-wrapper">
-        <div class="secondBtn" onclick="createCollection()">
+        <div class="secondBtn" onclick="createCollection()" id="createCollectionButtonLabel">
           Creer une collection
         </div>
       </div>
@@ -503,15 +506,15 @@
 
         <div class="globalStat">
           <div class="item">
-            <div>Gain</div>
+            <div id="statGainLabel">Gain</div>
             <div id="yearGainView">90 000 000 XAF</div>
           </div>
           <div class="item">
-            <div>Depense</div>
+            <div id="statDepenseLabel">Depense</div>
             <div id="yearDepenseView">90 000 000 XAF</div>
           </div>
           <div class="item">
-            <div>Epargne</div>
+            <div id="statEpargneLabel">Epargne</div>
             <div id="yearEpargneView">90 000 000 XAF</div>
           </div>
         </div>
@@ -586,6 +589,7 @@
     <script src="scripts/import_export.js"></script>
     <script src="scripts/androidPipeline.js"></script>
     <script src="scripts/splash.js"></script>
+    <script src="i18n.js" defer></script>
 
     <script>
       const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -593,6 +597,26 @@
         "data-theme",
         dark ? "dark" : "light",
       );
+      if (dark) {
+        // redesign input
+        let input = document.querySelectorAll("input");
+        for (let item of input) {
+          item.style.color = "#fff";
+        }
+        //recolor images
+        let images1 = document.querySelectorAll(
+          `li img,.inverse-image,img[src="assets/images/back.svg"],.donationItem img:last-child`,
+        );
+        for (let item of images1) {
+          item.style.filter = "invert(1)";
+        }
+        let images2 = document.querySelectorAll(
+          `.dayStatDate img,.collectionItem img`,
+        );
+        for (let item of images2) {
+          item.style.filter = "brightness(45)";
+        }
+      }
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (e) => {
